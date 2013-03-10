@@ -9,7 +9,7 @@ set t_Co=256
 set nu
 syntax on
 set background=dark
-colorscheme desert
+colorscheme wombat256mod
 
 " additional features
 set wildmenu

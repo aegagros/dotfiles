@@ -23,7 +23,7 @@ myTerminal      = "gnome-terminal"
  
 -- Width of the window border in pixels.
 --
-myBorderWidth   = 2
+myBorderWidth   = 1
  
 -- modMask lets you specify which modkey you want to use. The default
 -- is mod1Mask ("left alt").  You may also consider using mod3Mask
@@ -60,8 +60,8 @@ myWorkspaces    = ["1","2","3","4","5","6","7","8","9"]
  
 -- Border colors for unfocused and focused windows, respectively.
 --
-myNormalBorderColor  = "#666666"
-myFocusedBorderColor = "#ff1212"
+myNormalBorderColor  = "#222222"
+myFocusedBorderColor = "#6daee4"
  
 ------------------------------------------------------------------------
 -- Key bindings. Add, modify or remove key bindings here.
@@ -267,13 +267,13 @@ myBar = "xmobar"
 
 -- Custom PP, configure it as you like. It determines what is being written to the bar.
 -- myPP = xmobarPP { ppCurrent = xmobarColor "#429942" "" . wrap "<" ">" }
-myPP = defaultPP { ppCurrent = xmobarColor "#429942" "" . wrap "[" "]"
-                 , ppHidden = xmobarColor "#C98F0A" ""
-                 , ppHiddenNoWindows = xmobarColor "#C9A34E" ""
-                 , ppUrgent = xmobarColor "#FFFFAF" "" . wrap "[" "]" 
-                 , ppLayout = xmobarColor "#C9A34E" ""
-                 , ppTitle =  xmobarColor "#C9A34E" "" . shorten 80
-                 , ppSep = xmobarColor "#429942" "" " | "
+myPP = defaultPP { ppCurrent = xmobarColor "#e68f17" "" . wrap "[" "]"
+                 , ppHidden = xmobarColor "#6daee4" ""
+                 , ppHiddenNoWindows = xmobarColor "#185c94" ""
+                 , ppUrgent = xmobarColor "#e68f17" "" . wrap "[" "]" 
+                 , ppLayout = xmobarColor "#6daee4" ""
+                 , ppTitle =  xmobarColor "#6daee4" "" . shorten 128
+                 , ppSep = xmobarColor "#6daee4" "" " | "
                  }
 
 -- Key binding to toggle the gap for the bar.
