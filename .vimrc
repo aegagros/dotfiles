@@ -14,7 +14,8 @@ colorscheme wombat256mod
 " additional features
 set wildmenu
 set ruler
-set hlsearch
+" set hlsearch
+set incsearch
 
 map <F5> :Texplore<CR>
 map <F6> :w<CR>
