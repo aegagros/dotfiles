@@ -135,6 +135,9 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Lower/Raise Volume
     , ((0, xF86XK_AudioLowerVolume   ), spawn "amixer set Master 2-")
     , ((0, xF86XK_AudioRaiseVolume   ), spawn "amixer set Master 2+")
+
+    -- Lock Screen
+    , ((modm .|. shiftMask, xK_l     ), spawn "xscreensaver-command --lock")
  
     -- Quit xmonad
     , ((modm .|. shiftMask, xK_q     ), io (exitWith ExitSuccess))

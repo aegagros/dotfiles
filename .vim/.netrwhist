@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/home/manolis'
+let g:netrw_dirhist_2='/home/manolis/Projects/skiada'
+let g:netrw_dirhist_3='/home/manolis/Projects/skiada/templates'
+let g:netrw_dirhist_4='/home/manolis/Projects/skiada'
+let g:netrw_dirhist_5='/home/manolis/Projects/skiada/templates'
+let g:netrw_dirhist_6='/home/manolis/Projects/ekpa/4th_semester/vaseis_dedomenwn'
+let g:netrw_dirhist_7='/home/manolis/Projects/ekpa/4th_semester/vaseis_dedomenwn/BF'
+let g:netrw_dirhist_8='/home/manolis/Projects/ekpa/4th_semester/vaseis_dedomenwn'
+let g:netrw_dirhist_9='/home/manolis/Projects/ekpa/4th_semester/vaseis_dedomenwn/BF'

@@ -26,6 +26,9 @@ sleep 1
 volumeicon &
 sleep 1
 
+#start xscreensaver
+xscreensaver -no-splash &
+
 # issue #200 from code.google.com/p/xmonad/issues/detail?id=200
 export SAL_USE_VCLPLUGIN=gen
 
