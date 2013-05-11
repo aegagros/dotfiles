@@ -23,7 +23,7 @@ set incsearch
 set formatoptions=tcqr
 
 " open a NERDTree automatically
-autocmd vimenter * NERDTree
+autocmd vimenter * if !argc() | NERDTree | endif
 " close vim if the only window left open is a NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
