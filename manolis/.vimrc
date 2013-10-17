@@ -1,3 +1,7 @@
+" Pathogen
+filetype off " Pathogen needs to run before plugin indent on
+call pathogen#infect() " generate helptags for everything in 'runtimepath'
+
 " identation
 set smartindent
 set tabstop=4
@@ -30,22 +34,26 @@ set gfn=Ubuntu\ Mono\ 14
 :set guioptions-=T  "remove toolbar
 :set guioptions-=r  "remove right-hand scroll bar
 
-" open a NERDTree automatically if no arguments are specified
-" autocmd vimenter * if !argc() | NERDTree | endif
-" close vim if the only window left open is a NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-" display TagList window on the right
-let Tlist_Use_Right_Window=1
-" highlight doxygen tags
-" let g:load_doxygen_syntax=1
-" hide python compiled files
-let g:netrw_list_hide='.*\.pyc$'
+" display explore list as a tree by default
+" let Tlist_Use_Right_Window=1
+let g:netrw_liststyle=3
 
-" map <F5> :Texplore<CR>
-map <F3> :TlistToggle<CR>
-map <F5> :NERDTreeToggle<CR>
+map <F3> :TagbarToggle<CR>
 map <C-F5> :Texplore<CR>
+map <F5> :NERDTreeToggle<CR>
 map <F6> :w<CR>
 map <F7> :tabp<CR>
 map <F8> :tabn<CR>
+set pastetoggle=<F10>
 map <F12> :q<CR>
+
+" Customize status bar
+set laststatus=2
+set statusline=
+set statusline+=%<\                        " cut at start
+set statusline+=%2*[%n%H%M%R%W]%*\         " flags and buf no
+set statusline+=%{fugitive#statusline()}\  " current branch (Fugitive plugin)
+set statusline+=%-40f\                     " path
+set statusline+=%=%1*%y%*%*\               " file type
+set statusline+=%10((%l,%c)%)\             " line and column
+set statusline+=%P                         " percentage of file
