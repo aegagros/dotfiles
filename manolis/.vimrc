@@ -25,8 +25,11 @@ set ruler
 set incsearch
 " set format options
 set formatoptions=tcqr
-" set swap file directory to ~/.tmp
-set directory=~/.tmp
+
+" disable swap and backup files (Always use version control! ALWAYS!)
+set nobackup
+set noswapfile
+
 " set graphical font
 set gfn=Ubuntu\ Mono\ 14
 
