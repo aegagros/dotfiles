@@ -7,6 +7,7 @@ set smartindent
 set tabstop=4
 set shiftwidth=4
 set expandtab
+set nowrap
 
 " enable filetype plugin
 filetype plugin on
@@ -31,7 +32,7 @@ set nobackup
 set noswapfile
 
 " set graphical font
-set gfn=Ubuntu\ Mono\ 14
+set gfn=DejaVu\ Sans\ Mono\ 11
 
 :set guioptions-=m  "remove menu bar
 :set guioptions-=T  "remove toolbar
