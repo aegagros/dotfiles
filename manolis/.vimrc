@@ -8,6 +8,7 @@ set tabstop=4
 set shiftwidth=4
 set expandtab
 set nowrap
+set textwidth=100
 
 " enable filetype plugin
 filetype plugin on
@@ -25,7 +26,7 @@ set ruler
 " set hlsearch
 set incsearch
 " set format options
-set formatoptions=tcqr
+set formatoptions-=c
 
 " disable swap and backup files (Always use version control! ALWAYS!)
 set nobackup
