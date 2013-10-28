@@ -2,6 +2,9 @@
 filetype off " Pathogen needs to run before plugin indent on
 call pathogen#infect() " generate helptags for everything in 'runtimepath'
 
+set nocompatible
+set updatetime=1000
+
 " identation
 set smartindent
 set tabstop=4
@@ -62,3 +65,12 @@ set statusline+=%-40f\                     " path
 set statusline+=%=%1*%y%*%*\               " file type
 set statusline+=%10((%l,%c)%)\             " line and column
 set statusline+=%P                         " percentage of file
+
+" vimwiki ctags config
+let g:tagbar_type_vimwiki = {
+\ 'ctagstype' : 'vimwiki',
+\ 'kinds'     : [
+\ 'h:headers',
+\ ],
+\ 'sort'    : 0
+\ }
