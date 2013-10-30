@@ -56,15 +56,15 @@ set pastetoggle=<F10>
 map <F12> :q<CR>
 
 " Customize status bar
-set laststatus=2
-set statusline=
-set statusline+=%<\                        " cut at start
-set statusline+=%2*[%n%H%M%R%W]%*\         " flags and buf no
-set statusline+=%{fugitive#statusline()}\  " current branch (Fugitive plugin)
-set statusline+=%-40f\                     " path
-set statusline+=%=%1*%y%*%*\               " file type
-set statusline+=%10((%l,%c)%)\             " line and column
-set statusline+=%P                         " percentage of file
+"   set laststatus=2
+"   set statusline=
+"   set statusline+=%<\                        " cut at start
+"   set statusline+=%2*[%n%H%M%R%W]%*\         " flags and buf no
+"   set statusline+=%{fugitive#statusline()}\  " current branch (Fugitive plugin)
+"   set statusline+=%-40f\                     " path
+"   set statusline+=%=%1*%y%*%*\               " file type
+"   set statusline+=%10((%l,%c)%)\             " line and column
+"   set statusline+=%P                         " percentage of file
 
 " vimwiki ctags config
 let g:tagbar_type_vimwiki = {
@@ -74,3 +74,4 @@ let g:tagbar_type_vimwiki = {
 \ ],
 \ 'sort'    : 0
 \ }
+
