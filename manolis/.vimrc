@@ -21,15 +21,13 @@ set t_Co=256
 set nu
 syntax on
 set background=dark
-colorscheme Monokai
+colorscheme wombat256mod 
 
 " additional features
 set wildmenu
 set ruler
 " set hlsearch
 set incsearch
-" set format options
-set formatoptions-=c
 
 " disable swap and backup files (Always use version control! ALWAYS!)
 set nobackup
@@ -47,8 +45,8 @@ set gfn=DejaVu\ Sans\ Mono\ 11
 let g:netrw_liststyle=3
 
 map <F3> :TagbarToggle<CR>
-map <C-F5> :Texplore<CR>
-map <F5> :NERDTreeToggle<CR>
+map <C-F5> :tabnew<CR>
+map <F5> :NERDTreeMirror<CR>
 map <F6> :w<CR>
 map <F7> :tabp<CR>
 map <F8> :tabn<CR>
@@ -74,4 +72,3 @@ let g:tagbar_type_vimwiki = {
 \ ],
 \ 'sort'    : 0
 \ }
-
