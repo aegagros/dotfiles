@@ -1,4 +1,4 @@
-Config { font = "xft:Ubuntu Mono:pixelsize=16:style=bold"
+Config { font = "xft:Ubuntu Mono:pixelsize=16"
        , bgColor = "#111111"
        , fgColor = "#999999"
        , position = TopW L 95
@@ -9,7 +9,7 @@ Config { font = "xft:Ubuntu Mono:pixelsize=16:style=bold"
                     , Run Cpu ["-L","3","-H","50","--normal","green","--high","red"] 10
                     , Run Memory ["-t","Mem: <usedratio>%"] 10
                     , Run Swap [] 10
-                    , Run Battery ["-t", "<left>%", "-L", "25", "-l", "red", "--", "-c", "energy_full"] 10 
+                    , Run Battery ["-t", "<left>% (<timeleft>)", "-L", "25", "-l", "red", "--", "-c", "energy_full"] 10 
     		        , Run Date "%a %b %_d %Y - %H:%M" "date" 10
                     , Run Kbd [("us", "us"), ("gr", "gr")]
                     , Run Com "/home/manolis/bin/volume.sh" [] "volume" 5

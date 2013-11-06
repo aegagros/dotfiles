@@ -1,5 +1,5 @@
 # start trayer
-trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --width 5 --height 20 --transparent true --tint 0x111111 &
+trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --width 5 --height 20 --transparent true --tint 0x000000 &
 
 # set the cursor as pointer
 xsetroot -cursor_name left_ptr
@@ -19,12 +19,15 @@ sleep 1
 #if [ -x /usr/bin/nm-applet ] ; then
 #    ck-launch-session nm-applet &
 #fi
-wicd-client -t &
-sleep 1
+#wicd-client -t &
+#sleep 1
 
 # start the volume applet
 volumeicon &
 sleep 1
+
+#start pacellite
+parcellite & 
 
 #start xscreensaver
 xscreensaver -no-splash &

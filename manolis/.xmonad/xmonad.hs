@@ -13,6 +13,8 @@ import Graphics.X11.ExtraTypes.XF86
 import XMonad.Hooks.DynamicLog
 import XMonad.Actions.GridSelect
 import XMonad.Layout.NoBorders
+import XMonad.Layout.Tabbed
+import XMonad.Hooks.EwmhDesktops
  
 import qualified XMonad.StackSet as W
 import qualified Data.Map        as M
@@ -73,7 +75,7 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     [ ((modm .|. shiftMask, xK_Return), spawn $ XMonad.terminal conf)
  
     -- launch dmenu
-    , ((modm,               xK_p     ), spawn "exe=`dmenu_path | dmenu -b -l 8 -nb '#333333' -nf '#ffffff' -p '>>>'` && eval \"exec $exe\"")
+    , ((modm,               xK_p     ), spawn "exe=`dmenu_path | dmenu -b -l 8 -fn '-misc-fixed-*-*-*-*-20-*-*-*-*-*-*-7' -nb '#333333' -nf '#ffffff' -p '>>>'` && eval \"exec $exe\"")
  
     -- launch gmrun
     , ((modm .|. shiftMask, xK_p     ), spawn "gmrun")
@@ -139,6 +141,9 @@ myKeys conf@(XConfig {XMonad.modMask = modm}) = M.fromList $
     -- Lock Screen
     , ((modm .|. shiftMask, xK_l     ), spawn "xscreensaver-command --lock")
  
+    -- Start file explorer
+    , ((modm .|. shiftMask, xK_f     ), spawn "dbus-launch pcmanfm")
+ 
     -- Quit xmonad
     , ((modm .|. shiftMask, xK_q     ), io (exitWith ExitSuccess))
  
@@ -193,7 +198,14 @@ myMouseBindings (XConfig {XMonad.modMask = modMask}) = M.fromList $
 -- The available layouts.  Note that each layout is separated by |||,
 -- which denotes layout choice.
 --
-myLayout = smartBorders $ (tiled ||| Mirror tiled ||| Full)
+myTabTheme = defaultTheme {
+    fontName = "xft:Ubuntu Mono:pixelsize=16",
+    activeColor = "#333333", activeTextColor = "#ffffff", activeBorderColor = "#000000",
+    inactiveColor = "#111111", inactiveTextColor = "#999999", inactiveBorderColor = "#000000"
+}
+
+--myLayout = smartBorders $ (tabbed shrinkText myTabTheme ||| tiled ||| Mirror tiled ||| Full)
+myLayout = smartBorders $ (tabbed shrinkText myTabTheme ||| Mirror tiled ||| tiled ||| Full )
   where
      -- default tiling algorithm partitions the screen into two panes
      tiled   = Tall nmaster delta ratio
@@ -224,7 +236,8 @@ myLayout = smartBorders $ (tiled ||| Mirror tiled ||| Full)
 --
 myManageHook = composeAll
     [ className =? "mplayer2"        --> doFloat
-    , className =? "vlc"             --> doFloat  
+    , className =? "vlc"             --> doFloat
+    , className =? "processing-app-Base"      --> doFloat  
 --    , className =? "Gimp"           --> doFloat
     , resource  =? "desktop_window" --> doIgnore
     , resource  =? "kdesktop"       --> doIgnore ]
@@ -272,13 +285,13 @@ myBar = "xmobar"
 
 -- Custom PP, configure it as you like. It determines what is being written to the bar.
 -- myPP = xmobarPP { ppCurrent = xmobarColor "#429942" "" . wrap "<" ">" }
-myPP = defaultPP { ppCurrent = xmobarColor "#e68f17" "" . wrap "[" "]"
-                 , ppHidden = xmobarColor "#6daee4" ""
-                 , ppHiddenNoWindows = xmobarColor "#185c94" ""
-                 , ppUrgent = xmobarColor "#e68f17" "" . wrap "[" "]" 
-                 , ppLayout = xmobarColor "#6daee4" ""
-                 , ppTitle =  xmobarColor "#6daee4" "" . shorten 128
-                 , ppSep = xmobarColor "#6daee4" "" " | "
+myPP = defaultPP { ppCurrent = xmobarColor "#4a9ec1" "" . wrap "[" "]"
+                 , ppHidden = xmobarColor "white" ""
+                 , ppHiddenNoWindows = xmobarColor "#999999" ""
+                 , ppUrgent = xmobarColor "#999999" "" . wrap "[" "]" 
+                 , ppLayout = xmobarColor "#777777" ""
+                 , ppTitle =  xmobarColor "white" "" . shorten 128
+                 , ppSep = xmobarColor "#777777" "" " | "
                  }
 
 -- Key binding to toggle the gap for the bar.
@@ -311,6 +324,7 @@ defaults = defaultConfig {
         layoutHook         = myLayout,
         manageHook         = myManageHook,
         logHook            = myLogHook,
-        startupHook        = myStartupHook
+        startupHook        = myStartupHook,
+        handleEventHook    = ewmhDesktopsEventHook
     }
 
