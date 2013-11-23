@@ -1,14 +1,14 @@
 # start trayer
-trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --width 5 --height 20 --transparent true --tint 0x000000 &
+# trayer --edge top --align right --SetDockType true --SetPartialStrut true --expand true --width 5 --height 20 --transparent true --tint 0x000000 &
 
 # set the cursor as pointer
-xsetroot -cursor_name left_ptr
+# xsetroot -cursor_name left_ptr
 
 # switch layout
-setxkbmap -option grp:switch,grp:alt_shift_toggle,grp_led:scroll us,el
+# setxkbmap -option grp:switch,grp:alt_shift_toggle,grp_led:scroll us,el
 
 # start xmonad window manager
-exec ck-launch-session xmonad & wmpid=$!
+exec ck-launch-session startxfce4 & wmpid=$!
 sleep 1
 
 # start the notification daemon
@@ -23,11 +23,11 @@ sleep 1
 #sleep 1
 
 # start the volume applet
-volumeicon &
-sleep 1
+#volumeicon &
+#sleep 1
 
 #start pacellite
-parcellite & 
+#parcellite & 
 
 #start xscreensaver
 xscreensaver -no-splash &

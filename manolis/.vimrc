@@ -44,6 +44,7 @@ set gfn=DejaVu\ Sans\ Mono\ 11
 " let Tlist_Use_Right_Window=1
 let g:netrw_liststyle=3
 
+map <F2> :NERDTreeToggle<CR>
 map <F3> :TagbarToggle<CR>
 map <C-F5> :tabnew<CR>
 map <F5> :NERDTreeMirror<CR>
@@ -53,17 +54,6 @@ map <F8> :tabn<CR>
 set pastetoggle=<F10>
 map <F12> :q<CR>
 
-" Customize status bar
-"   set laststatus=2
-"   set statusline=
-"   set statusline+=%<\                        " cut at start
-"   set statusline+=%2*[%n%H%M%R%W]%*\         " flags and buf no
-"   set statusline+=%{fugitive#statusline()}\  " current branch (Fugitive plugin)
-"   set statusline+=%-40f\                     " path
-"   set statusline+=%=%1*%y%*%*\               " file type
-"   set statusline+=%10((%l,%c)%)\             " line and column
-"   set statusline+=%P                         " percentage of file
-
 " vimwiki ctags config
 let g:tagbar_type_vimwiki = {
 \ 'ctagstype' : 'vimwiki',
@@ -72,3 +62,9 @@ let g:tagbar_type_vimwiki = {
 \ ],
 \ 'sort'    : 0
 \ }
+
+" Open a NERDTree on startup
+" autocmd VimEnter * if !argc() | NERDTree | endif
+
+" Set vim-calendar keys
+let g:calendar_keys = { 'goto_next_month':'<C-Right>', 'goto_prev_month':'<C-Left>', 'goto_prev_year':'<C-Up>', 'goto_next_year':'<C-Down>' }
