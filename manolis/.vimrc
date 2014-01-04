@@ -53,6 +53,8 @@ map <F7> :tabp<CR>
 map <F8> :tabn<CR>
 set pastetoggle=<F10>
 map <F12> :q<CR>
+map <leader>p :CtrlPBuffer<CR>
+map <leader>P :CtrlPMRU<CR>
 
 " vimwiki ctags config
 let g:tagbar_type_vimwiki = {
@@ -65,6 +67,8 @@ let g:tagbar_type_vimwiki = {
 
 " Open a NERDTree on startup
 " autocmd VimEnter * if !argc() | NERDTree | endif
+" Quit if last and only buffer is a NERDTree
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 
 " Set vim-calendar keys
 let g:calendar_keys = { 'goto_next_month':'<C-Right>', 'goto_prev_month':'<C-Left>', 'goto_prev_year':'<C-Up>', 'goto_next_year':'<C-Down>' }
