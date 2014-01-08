@@ -34,7 +34,7 @@ set nobackup
 set noswapfile
 
 " set graphical font
-set gfn=DejaVu\ Sans\ Mono\ 11
+set gfn=Source\ Code\ Pro\ 9
 
 :set guioptions-=m  "remove menu bar
 :set guioptions-=T  "remove toolbar
