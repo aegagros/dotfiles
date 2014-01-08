@@ -20,8 +20,8 @@ filetype plugin on
 set t_Co=256
 set nu
 syntax on
-set background=dark
-colorscheme wombat256mod 
+set background=light
+colorscheme lucius 
 
 " additional features
 set wildmenu
