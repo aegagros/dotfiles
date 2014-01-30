@@ -21,7 +21,8 @@ set t_Co=256
 set nu
 syntax on
 set background=light
-colorscheme lucius 
+colorscheme lucius
+set hlsearch
 
 " additional features
 set wildmenu
@@ -33,9 +34,8 @@ set incsearch
 set nobackup
 set noswapfile
 
-" set graphical font
+" setup various gvim modifications
 set gfn=Source\ Code\ Pro\ 9
-
 :set guioptions-=m  "remove menu bar
 :set guioptions-=T  "remove toolbar
 :set guioptions-=r  "remove right-hand scroll bar
@@ -55,6 +55,10 @@ set pastetoggle=<F10>
 map <F12> :q<CR>
 map <leader>p :CtrlPBuffer<CR>
 map <leader>P :CtrlPMRU<CR>
+
+" these will work only in gvim
+map <C-Tab> :bnext<CR>
+map <C-S-Tab> :bprev<CR>
 
 " vimwiki ctags config
 let g:tagbar_type_vimwiki = {
