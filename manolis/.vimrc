@@ -23,6 +23,7 @@ syntax on
 set background=light
 colorscheme lucius
 set hlsearch
+set laststatus=2
 
 " additional features
 set wildmenu
@@ -55,6 +56,11 @@ set pastetoggle=<F10>
 map <F12> :q<CR>
 map <leader>p :CtrlPBuffer<CR>
 map <leader>P :CtrlPMRU<CR>
+" Alt + arrow window navigation
+nmap <silent> <A-Up> :wincmd k<CR>
+nmap <silent> <A-Down> :wincmd j<CR>
+nmap <silent> <A-Left> :wincmd h<CR>
+nmap <silent> <A-Right> :wincmd l<CR>
 
 " these will work only in gvim
 map <C-Tab> :bnext<CR>
