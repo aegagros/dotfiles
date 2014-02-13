@@ -1,3 +1,6 @@
 [submodule "manolis/.vim/bundle/mustache"]
 	path = manolis/.vim/bundle/mustache
 	url = git://github.com/mustache/vim-mustache-handlebars.git
+[submodule "manolis/.vim/bundle/vim-colors-solarized"]
+	path = manolis/.vim/bundle/vim-colors-solarized
+	url = git://github.com/altercation/vim-colors-solarized.git
