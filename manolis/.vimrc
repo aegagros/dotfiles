@@ -20,12 +20,12 @@ filetype plugin on
 set t_Co=256
 set nu
 syntax on
-colorscheme solarized
 set background=dark
-let g:solarized_contrast="high"
 let g:solarized_termcolors=256
+let g:solarized_contrast="high"
 set hlsearch
 set laststatus=2
+colorscheme solarized
 
 " additional features
 set wildmenu
