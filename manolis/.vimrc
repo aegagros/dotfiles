@@ -40,9 +40,11 @@ set noswapfile
 " setup various gvim modifications
 set gfn=Consolas\ 10
 " :set guioptions-=m  "remove menu bar
-:set guioptions-=T  "remove toolbar
-:set guioptions-=rR  "remove right-hand scroll bar
-:set guioptions-=lL  "remove right-hand scroll bar
+set guioptions-=T  "remove toolbar
+set guioptions-=r  "remove right-hand scroll bar
+set guioptions-=R "remove right-hand scroll bar
+set guioptions-=l  "remove right-hand scroll bar
+set guioptions-=L  "remove right-hand scroll bar
 
 " display explore list as a tree by default
 " let Tlist_Use_Right_Window=1
