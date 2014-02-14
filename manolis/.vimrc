@@ -20,8 +20,10 @@ filetype plugin on
 set t_Co=256
 set nu
 syntax on
-set background=light
-colorscheme lucius
+colorscheme solarized
+set background=dark
+let g:solarized_contrast="high"
+let g:solarized_termcolors=256
 set hlsearch
 set laststatus=2
 
@@ -37,9 +39,10 @@ set noswapfile
 
 " setup various gvim modifications
 set gfn=Consolas\ 10
-:set guioptions-=m  "remove menu bar
+" :set guioptions-=m  "remove menu bar
 :set guioptions-=T  "remove toolbar
-:set guioptions-=r  "remove right-hand scroll bar
+:set guioptions-=rR  "remove right-hand scroll bar
+:set guioptions-=lL  "remove right-hand scroll bar
 
 " display explore list as a tree by default
 " let Tlist_Use_Right_Window=1
