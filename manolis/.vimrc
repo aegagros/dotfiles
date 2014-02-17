@@ -38,7 +38,7 @@ set nobackup
 set noswapfile
 
 " setup various gvim modifications
-set gfn=Consolas\ 10
+set gfn=Monaco\ 9
 " :set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
