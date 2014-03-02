@@ -7,3 +7,6 @@
 [submodule "manolis/.vim/bundle/vim-less"]
 	path = manolis/.vim/bundle/vim-less
 	url = https://github.com/groenewege/vim-less.git
+[submodule "manolis/.vim/bundle/ctrlp.vim"]
+	path = manolis/.vim/bundle/ctrlp.vim
+	url = git://github.com/kien/ctrlp.vim
