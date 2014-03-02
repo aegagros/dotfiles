@@ -13,3 +13,6 @@
 [submodule "manolis/.vim/bundle/nerdtree"]
 	path = manolis/.vim/bundle/nerdtree
 	url = git://github.com/scrooloose/nerdtree.git
+[submodule "manolis/.vim/bundles/tagbar"]
+	path = manolis/.vim/bundles/tagbar
+	url = git://github.com/majutsushi/tagbar
