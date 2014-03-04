@@ -10,3 +10,12 @@
 [submodule "manolis/.vim/bundle/vim-autoclose"]
 	path = manolis/.vim/bundle/vim-autoclose
 	url = https://github.com/Townk/vim-autoclose.git
+[submodule "manolis/.vim/bundle/ctrlp.vim"]
+	path = manolis/.vim/bundle/ctrlp.vim
+	url = git://github.com/kien/ctrlp.vim
+[submodule "manolis/.vim/bundle/nerdtree"]
+	path = manolis/.vim/bundle/nerdtree
+	url = git://github.com/scrooloose/nerdtree.git
+[submodule "manolis/.vim/bundles/tagbar"]
+	path = manolis/.vim/bundles/tagbar
+	url = git://github.com/majutsushi/tagbar
