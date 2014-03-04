@@ -4,6 +4,7 @@ call pathogen#infect() " generate helptags for everything in 'runtimepath'
 
 set nocompatible
 set updatetime=1000
+set clipboard=unnamedplus
 
 " identation
 set smartindent
