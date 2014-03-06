@@ -56,7 +56,8 @@ fi
 source ~/.bash/git-prompt
 
 if [ "$color_prompt" = yes ]; then
-    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\] \W\[\033[00m\] \[\033[36m\]$(parse_git_branch_or_tag)\$ \[\033[0m\]'
+#    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\] \W\[\033[00m\] \[\033[36m\]$(parse_git_branch_or_tag)\$ \[\033[0m\]'
+    PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\] \w\[\033[00m\]\$ '
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h: \W\$ '
 fi
@@ -108,5 +109,7 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
+alsi
+fortune -a
 # switch layout
 # setxkbmap -option grp:switch,grp:alt_shift_toggle,grp_led:scroll us,el
