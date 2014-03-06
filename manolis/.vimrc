@@ -22,11 +22,9 @@ set t_Co=256
 set nu
 syntax on
 set background=dark
-let g:solarized_termcolors=256
-let g:solarized_contrast="high"
 set hlsearch
 set laststatus=2
-colorscheme solarized
+colorscheme Monokai 
 
 " additional features
 set wildmenu
@@ -39,13 +37,16 @@ set nobackup
 set noswapfile
 
 " setup various gvim modifications
-set gfn=Monaco\ 9
+set gfn=Monaco\ 10
 " :set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
 set guioptions-=R "remove right-hand scroll bar
 set guioptions-=l  "remove right-hand scroll bar
 set guioptions-=L  "remove right-hand scroll bar
+if has("gui_running")
+  set lines=60 columns=160
+endif
 
 " display explore list as a tree by default
 " let Tlist_Use_Right_Window=1
