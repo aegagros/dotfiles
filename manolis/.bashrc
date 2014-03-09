@@ -110,6 +110,6 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 
 alsi
-fortune -a
+# fortune -a
 # switch layout
 # setxkbmap -option grp:switch,grp:alt_shift_toggle,grp_led:scroll us,el
