@@ -24,7 +24,7 @@ syntax on
 set background=dark
 set hlsearch
 set laststatus=2
-colorscheme Monokai 
+colorscheme molokai 
 
 " additional features
 set wildmenu
