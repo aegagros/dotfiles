@@ -89,3 +89,7 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 
 " Set vim-calendar keys
 let g:calendar_keys = { 'goto_next_month':'<C-Right>', 'goto_prev_month':'<C-Left>', 'goto_prev_year':'<C-Up>', 'goto_next_year':'<C-Down>' }
+
+" Strip trailing spaces
+autocmd FileType c,cpp,java,php,js,html autocmd BufWritePre <buffer> :%s/\s\+$//e
+
