@@ -24,7 +24,7 @@ syntax on
 set background=dark
 set hlsearch
 set laststatus=2
-colorscheme molokai 
+colorscheme ir_black 
 
 " additional features
 set wildmenu
@@ -93,3 +93,8 @@ let g:calendar_keys = { 'goto_next_month':'<C-Right>', 'goto_prev_month':'<C-Lef
 " Strip trailing spaces
 autocmd FileType c,cpp,java,php,js,html autocmd BufWritePre <buffer> :%s/\s\+$//e
 
+" Instruct Ctrl-P to ignore files according to git ignore patterns
+let g:ctrlp_user_command = [
+    \ '.git', 'cd %s && git ls-files . -co --exclude-standard',
+    \ 'find %s -type f'
+    \ ]
