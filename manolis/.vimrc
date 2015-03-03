@@ -37,7 +37,7 @@ set nobackup
 set noswapfile
 
 " setup various gvim modifications
-set gfn=Monaco\ 10
+set gfn=Monospace\ 11
 " :set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
@@ -98,3 +98,7 @@ let g:ctrlp_user_command = [
     \ '.git', 'cd %s && git ls-files . -co --exclude-standard',
     \ 'find %s -type f'
     \ ]
+
+" Instruct syntastic to use C++11 stuff
+let g:syntastic_cpp_compiler = 'g++'
+let g:syntastic_cpp_compiler_options = ' -std=c++11'
