@@ -18,13 +18,14 @@ set textwidth=100
 filetype plugin on
 
 " syntax-coloring, line numbers, etc.
+let g:load_doxygen_syntax=1
 set t_Co=256
 set nu
 syntax on
-set background=dark
+set background=light
 set hlsearch
 set laststatus=2
-colorscheme ir_black 
+colorscheme soso
 
 " additional features
 set wildmenu
@@ -37,7 +38,6 @@ set nobackup
 set noswapfile
 
 " setup various gvim modifications
-set gfn=Monospace\ 11
 " :set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
@@ -89,16 +89,3 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 
 " Set vim-calendar keys
 let g:calendar_keys = { 'goto_next_month':'<C-Right>', 'goto_prev_month':'<C-Left>', 'goto_prev_year':'<C-Up>', 'goto_next_year':'<C-Down>' }
-
-" Strip trailing spaces
-autocmd FileType c,cpp,java,php,js,html autocmd BufWritePre <buffer> :%s/\s\+$//e
-
-" Instruct Ctrl-P to ignore files according to git ignore patterns
-let g:ctrlp_user_command = [
-    \ '.git', 'cd %s && git ls-files . -co --exclude-standard',
-    \ 'find %s -type f'
-    \ ]
-
-" Instruct syntastic to use C++11 stuff
-let g:syntastic_cpp_compiler = 'g++'
-let g:syntastic_cpp_compiler_options = ' -std=c++11'
