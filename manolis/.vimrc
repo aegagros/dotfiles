@@ -38,6 +38,7 @@ set nobackup
 set noswapfile
 
 " setup various gvim modifications
+set gfn=Monospace\ 10
 " :set guioptions-=m  "remove menu bar
 set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
@@ -63,6 +64,7 @@ set pastetoggle=<F10>
 map <F12> :q<CR>
 map <leader>p :CtrlPBuffer<CR>
 map <leader>P :CtrlPMRU<CR>
+map <leader>t :TW<CR>
 " Alt + arrow window navigation
 nmap <silent> <A-Up> :wincmd k<CR>
 nmap <silent> <A-Down> :wincmd j<CR>
@@ -89,3 +91,19 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTree
 
 " Set vim-calendar keys
 let g:calendar_keys = { 'goto_next_month':'<C-Right>', 'goto_prev_month':'<C-Left>', 'goto_prev_year':'<C-Up>', 'goto_next_year':'<C-Down>' }
+
+" Strip trailing spaces
+autocmd FileType c,cpp,java,php,js,html autocmd BufWritePre <buffer> :%s/\s\+$//e
+
+" Instruct Ctrl-P to ignore files according to git ignore patterns
+let g:ctrlp_user_command = [
+    \ '.git', 'cd %s && git ls-files . -co --exclude-standard',
+    \ 'find %s -type f'
+    \ ]
+
+" Instruct syntastic to use C++11 stuff
+let g:syntastic_cpp_compiler = 'g++'
+let g:syntastic_cpp_compiler_options = ' -std=c++11'
+
+let g:task_rc_override = 'rc.defaultwidth=0 rc.defaultheight=0'
+
