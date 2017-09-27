@@ -1,0 +1,401 @@
+;=====================================================
+;
+;   To learn more about how to configure Polybar
+;   go to https://github.com/jaagr/polybar
+;
+;   The README contains alot of information
+;
+;=====================================================
+
+[gjm_color]
+cursor = #cee318
+background = #1C1C1C
+foreground = #c5c5c5
+black_dk = #1C1C1C
+black_lt = #666666
+red_dk = #ff005b
+red_lt = #ff00a0
+green_dk = #cee318
+green_lt = #ccff00
+yellow_dk = #ffe755
+yellow_lt = #ff9f00
+blue_dk = #048ac7
+blue_lt = #48c6ff
+magenta_dk = #833c9f
+magenta_lt = #be67e1
+cyan_dk = #0ac1cd
+cyan_lt = #63e7f0
+white_dk = #e5e5e5
+white_lt = #f3f3f3
+
+[gruvbox_color]
+background = #1d2021
+foreground = #ebdbb2
+black_dk = #282828
+black_lt = #928374
+red_dk = #cc241d
+red_lt = #fb4934
+green_dk = #98971a
+green_lt = #b8bb26
+yellow_dk = #d79921
+yellow_lt = #fabd2f
+blue_dk = #458588
+blue_lt = #83a598
+magenta_dk = #b16286
+magenta_lt = #d3869b
+cyan_dk = #689d6a
+cyan_lt = #8ec07c
+white_dk = #a89984
+white_lt = #ebdbb2
+
+[colors]
+background = #66000000
+background-alt = ${gruvbox_color.black_lt}
+foreground = ${gruvbox_color.foreground}
+foreground-alt = ${gruvbox_color.black_lt}
+primary = ${gruvbox_color.green_dk}
+secondary = ${gruvbox_color.blue_dk}
+alert = ${gruvbox_color.red_dk}
+
+[fonts]
+; font_0 = Inconsolata:style=normal:size=9
+font_0 = FiraSans:size=10
+font_1 = DejaVuSansMono:size=10
+font_2 = FontAwesome:size=16
+
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
+
+[progressbar]
+indicator_icon = █
+empty_icon = ░
+fill_icon = ▓
+width = 10
+
+[bar/main]
+monitor = ${env:MONITOR:eDP1}
+width = 100%
+height = 40
+offset-x = 0
+offset-y = 0
+bottom = true
+enable-ipc = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+overline-size = 3
+overline-color = ${gruvbox_color.red_dk}
+underline-size = 3
+underline-color = ${gruvbox_color.blue_dk}
+
+border-bottom = 0
+border-bottom-color = #333
+
+spacing = 1
+padding-left = 1
+padding-right = 1
+module-margin-left = 2
+module-margin-right = 2
+
+font-0 = ${fonts.font_0}
+font-1 = ${fonts.font_1}
+font-2 = ${fonts.font_2}
+
+modules-left = backlight volume mpd
+modules-center = i3
+modules-right = xkeyboard battery1 battery2 wlan eth cpu temperature pkg date
+
+tray-position = left
+tray-padding = 2
+tray-transparent = false
+tray-background = #1c1c1c
+tray-maxsize = 24
+
+;wm-restack = bspwm
+;wm-restack = i3
+
+;override-redirect = true
+
+;scroll-up = bspwm-desknext
+;scroll-down = bspwm-deskprev
+
+;scroll-up = i3wm-wsnext
+;scroll-down = i3wm-wsprev
+
+[bar/secondary]
+monitor = ${env:MONITOR:HDMI-0}
+width = 100%
+height = 30
+offset-x = 0
+offset-y = 0
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+overline-size = 2
+overline-color = ${gruvbox_color.red_dk}
+underline-size = 2
+underline-color = ${gruvbox_color.blue_dk}
+
+border-bottom = 0
+border-bottom-color = #333
+
+spacing = 1
+padding-left = 1
+padding-right = 1
+module-margin-left = 0
+module-margin-right = 3
+
+font-0 = ${fonts.font_0}
+font-1 = ${fonts.font_1}
+font-2 = ${fonts.font_2}
+
+modules-left = xwindow
+modules-center = i3
+modules-right = xkeyboard date
+
+[module/mpd]
+type = internal/mpd
+format-online = <label-song>  <icon-prev> <icon-stop> <toggle> <icon-next>  <icon-repeat> <icon-random>
+format-online-foreground = ${colors.foreground-alt}
+
+label-song-maxlen = 25
+label-song-ellipsis = true
+icon-prev = 
+icon-seekb = 
+icon-stop = 
+icon-play = 
+icon-pause = 
+icon-next = 
+icon-seekf = 
+icon-random = 
+icon-repeat = 
+
+toggle-on-foreground = ${colors.primary}
+toggle-off-foreground = ${colors.foreground-alt}
+
+
+[module/xwindow]
+type = internal/xwindow
+label = %title:0:40:...%
+
+[module/xkeyboard]
+type = internal/xkeyboard
+; blacklist-0 = num lock
+
+format-underline = ${colors.primary}
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt}
+
+label-layout = %layout:2%
+
+label-indicator-padding = 1
+label-indicator-foreground = ${gruvbox_color.green_dk}
+label-indicator-underline = ${gruvbox_color.green_dk}
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+; index-sort = true
+wrapping-scroll = false
+; pin-workspaces = true
+strip-wsnumbers = true
+
+label-mode-padding = 2
+label-mode-foreground = #000
+label-mode-background = ${colors.alert}
+
+label-focused = %name%
+label-focused-background = ${gruvbox_color.black_dk}
+label-focused-underline = ${colors.alert}
+label-focused-padding = 3
+
+label-unfocused = %name%
+label-unfocused-padding = 3
+
+label-urgent = %name%
+label-urgent-background = ${colors.alert}
+label-urgent-foreground = #000
+label-urgent-padding = 3
+
+label-visible = %name%
+label-visible-background = ${self.label-focused-background}
+label-visible-underline = ${self.label-focused-underline}
+label-visible-padding = ${self.label-focused-padding}
+
+[module/backlight]
+type = internal/xbacklight
+
+format = <label> <bar>
+label = 
+label-foreground = ${colors.foreground-alt}
+
+bar-width = ${progressbar.width}
+bar-indicator = ${progressbar.indicator_icon}
+bar-indicator-foreground = #ff
+bar-indicator-font = 1
+bar-fill = ${progressbar.fill_icon}
+bar-fill-font = 1
+bar-fill-foreground = ${gruvbox_color.yellow_dk}
+bar-empty = ${progressbar.empty_icon}
+bar-empty-font = 1
+bar-empty-foreground = ${colors.foreground-alt}
+
+[module/cpu]
+type = internal/cpu
+interval = 2
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt}
+format-underline = ${colors.primary}
+label = %percentage:4%%
+
+[module/wlan]
+type = internal/network
+interface = wlp3s0
+interval = 3.0
+
+format-connected-prefix = " "
+format-connected-prefix-foreground = ${colors.foreground-alt}
+format-connected = <label-connected>
+format-connected-underline = ${colors.primary}
+format-disconnected-prefix =
+format-disconnected-underline = ${colors.alert}
+
+label-connected = %essid% %signal%%
+label-disconnected = %ifname% disconnected
+label-disconnected-foreground = ${colors.foreground-alt}
+
+[module/eth]
+type = internal/network
+interface = enp0s25
+interval = 3.0
+
+format-connected-underline = ${colors.primary}
+format-connected-prefix = " "
+format-connected-prefix-foreground = ${colors.foreground-alt}
+format-connected-foreground = ${colors.foreground}
+label-connected = %local_ip%
+
+format-disconnected =
+format-disconnected-underline = ${colors.alert}
+label-disconnected = %ifname% disconnected
+label-disconnected-foreground = ${colors.foreground-alt}
+
+[module/date]
+type = internal/date
+interval = 5
+
+date = "%d/%m/%Y"
+date-alt = " %Y-%m-%d"
+
+time = %H:%M
+time-alt = %H:%M:%S
+
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt}
+format-underline = ${colors.primary}
+
+label = %date% %time%
+
+[module/volume]
+type = internal/volume
+
+format-volume = <label-volume> <bar-volume>
+label-volume = 
+label-volume-foreground = ${colors.foreground-alt}
+
+format-muted-prefix = " "
+format-muted-foreground = ${colors.foreground-alt}
+label-muted = sound muted
+
+bar-volume-width = ${progressbar.width}
+bar-volume-foreground-0 = ${gruvbox_color.green_dk}
+bar-volume-foreground-1 = ${gruvbox_color.green_dk}
+bar-volume-foreground-2 = ${gruvbox_color.green_dk}
+bar-volume-foreground-3 = ${gruvbox_color.green_dk}
+bar-volume-foreground-4 = ${gruvbox_color.yellow_dk}
+bar-volume-foreground-5 = ${gruvbox_color.yellow_dk}
+bar-volume-foreground-6 = ${gruvbox_color.red_dk}
+bar-volume-gradient = false
+bar-volume-indicator = ${progressbar.indicator_icon}
+bar-volume-indicator-font = 1
+bar-volume-indicator-foreground = ${gruvbox_color.foreground}
+bar-volume-fill = ${progressbar.fill_icon}
+bar-volume-fill-font = 1
+bar-volume-empty = ${progressbar.empty_icon}
+bar-volume-empty-font = 1
+bar-volume-empty-foreground = ${colors.foreground-alt}
+
+[module/battery1]
+type = internal/battery
+battery = BAT0
+adapter = AC
+full-at = 98
+time-format = %H:%M
+
+format-charging = <animation-charging> <label-charging>
+format-charging-underline = ${gruvbox_color.green_dk}
+label-charging = %percentage%%
+label-charging-foreground = ${self.format-charging-underline}
+
+format-discharging = <ramp-capacity> <label-discharging>
+format-discharging-underline = ${colors.primary}
+label-discharging = %percentage%%
+
+format-full-prefix = " "
+format-full-prefix-foreground = ${colors.foreground-alt}
+format-full-underline = ${self.format-charging-underline}
+
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-3 = 
+ramp-capacity-foreground = ${colors.foreground-alt}
+
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-3 = 
+animation-charging-4 = 
+animation-charging-foreground = ${self.format-charging-underline}
+animation-charging-framerate = 250
+
+[module/battery2]
+inherit = module/battery1
+battery = BAT1
+
+[module/temperature]
+type = internal/temperature
+thermal-zone = 0
+warn-temperature = 60
+
+format = <ramp> <label>
+format-underline = ${colors.primary}
+format-warn = <ramp> <label-warn>
+format-warn-underline = ${colors.alert}
+
+label = %temperature:4%
+label-warn = %temperature%
+label-warn-foreground = ${colors.secondary}
+
+ramp-0 = 
+ramp-1 = 
+ramp-2 = 
+ramp-3 = 
+ramp-4 = 
+ramp-foreground = ${colors.foreground-alt}
+
+[module/pkg]
+type = custom/script
+interval = 600
+format = <label>
+format-underline = ${colors.primary}
+label = "%output:0:30%"
+exec = .config/polybar/pkg.sh
+exec-if = "ping -q -w 2 -c 1 176.34.135.167 > /dev/null"
+click-left = (checkupdates && cower -u) | xargs -I pkg notify-send pkg
+
+; vim:ft=dosini
