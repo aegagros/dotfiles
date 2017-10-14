@@ -2,6 +2,8 @@
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
 set $mod Mod4
+set $terminal termite
+
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -22,7 +24,7 @@ font pango:FiraSans,FontAwesome 10
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec konsole
+bindsym $mod+Return exec $terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
@@ -285,7 +287,7 @@ exec --no-startup-id owncloud &
 # prestart applications
 # exec --no-startup-id i3-msg 'workspace $wsBrowser; exec /usr/bin/firefox'
 # exec --no-startup-id i3-msg 'workspace $wsMail; exec /usr/bin/thunderbird;'
-# exec --no-startup-id i3-msg 'workspace $wsConsole; exec /usr/bin/konsole;'
+# exec --no-startup-id i3-msg 'workspace $wsConsole; exec /usr/bin/$terminal;'
 exec --no-startup-id i3-msg 'workspace $wsConsole'
 # exec --no-startup-id i3-msg 'workspace $wsChat; exec /usr/bin/google-chrome-stable;'
 exec --no-startup-id conky -d
