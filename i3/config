@@ -4,6 +4,25 @@
 set $mod Mod4
 set $terminal termite
 
+# colors
+set $col_background #1d2021
+set $col_foreground #ebdbb2
+set $col_black_dk #282828
+set $col_black_lt #928374
+set $col_red_dk #cc241d
+set $col_red_lt #fb4934
+set $col_green_dk #98971a
+set $col_green_lt #b8bb26
+set $col_yellow_dk #d79921
+set $col_yellow_lt #fabd2f
+set $col_blue_dk #458588
+set $col_blue_lt #83a598
+set $col_magenta_dk #b16286
+set $col_magenta_lt #d3869b
+set $col_cyan_dk #689d6a
+set $col_cyan_lt #8ec07c
+set $col_white_dk #a89984
+set $col_white_lt #ebdbb2
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -192,16 +211,19 @@ bindsym $mod+r mode "resize"
 # }
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
-for_window [class="^.*"] border pixel 0
+for_window [class="^.*"] border pixel 1
 for_window [class="Galculator"] floating enable
 gaps inner 20
 # smart_gaps on
 # smart_borders on
 
-client.focused #048ac7 #048ac7 #ffffff #dddddd
-client.focused_inactive #333333 #333333 #888888 #292d2e
-client.unfocused #00000000 #00000000 #888888 #292d2e
-client.urgent #2f343a #900000 #ffffff #900000
+# colors
+# class                 border          background      text            indicator       child_border
+client.focused          $col_green_dk   $col_green_dk   $col_foreground $col_green_lt   $col_green_dk
+client.focused_inactive $col_green_dk   $col_green_dk   $col_foreground $col_green_lt   $col_green_dk
+client.unfocused        $col_background $col_background $col_foreground $col_green_lt   $col_background
+client.urgent           $col_red_dk     $col_background $col_foreground $col_red_lt     $col_red_dk
+client.background       $col_background
 
 set $wsBrowser "2:"
 set $wsMail "3:"
@@ -231,6 +253,7 @@ workspace $wsMusic output DP-0
 assign [class="Firefox"] workspace $wsBrowser
 assign [class="Google-chrome"] workspace $wsBrowser
 assign [class="qutebrowser"] workspace $wsBrowser
+assign [class="Vivaldi"] workspace $wsBrowser
 # mail
 assign [class="Thunderbird"] workspace $wsMail
 assign [class="Geary"] workspace $wsMail
