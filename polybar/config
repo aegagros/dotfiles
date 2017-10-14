@@ -49,7 +49,7 @@ white_dk = #a89984
 white_lt = #ebdbb2
 
 [colors]
-background = #66000000
+background = #00000000
 background-alt = ${gruvbox_color.black_lt}
 foreground = ${gruvbox_color.foreground}
 foreground-alt = ${gruvbox_color.black_lt}
