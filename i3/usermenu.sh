@@ -4,7 +4,7 @@ LOGOFF='Log off'
 RESTART='Restart'
 SHUTDOWN='Shutdown'
 
-OUTPUT=$(echo -e "$LOGOFF\n$RESTART\n$SHUTDOWN" | rofi -dmenu -p "Select action" -lines 3)
+OUTPUT=$(echo -e "$LOGOFF\n$RESTART\n$SHUTDOWN" | rofi -dmenu -p "Select action" -lines 1 -columns 3)
 
 if [ "$OUTPUT" = "$LOGOFF" ]; then
     i3-msg exit

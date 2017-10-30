@@ -8,7 +8,7 @@ allow_bold = true
 dynamic_title = true
 urgent_on_bell = true
 clickable_url = true
-font = Source Code Pro Medium 10
+font = Source Code Pro 11
 scrollback_lines = 1000
 search_wrap = true
 icon_name = terminal
@@ -23,6 +23,7 @@ cursor_shape = block
 [colors]
 # colorscheme: gruvbox
 background = #1d2021
+background = rgba(29,32,33,0.9)
 foreground = #ebdbb2
 foreground_bold = #ebdbb2
 # dark0 + gray

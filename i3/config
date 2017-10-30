@@ -129,7 +129,7 @@ bindsym $mod+n exec "rofi -p 'new workspace: ' -input ~/.config/i3/desktops -dme
 
 # execute arbitrary i3 command
 # bindsym $mod+x exec i3-input -P 'Command: '
-bindsym $mod+x exec "cat '' | rofi -p 'i3-cmd: ' -dmenu | xargs i3-msg"
+bindsym $mod+x exec "cat '' | rofi -p 'i3-cmd: ' -lines 0 -dmenu | xargs i3-msg"
 
 # goto specific window
 bindsym $mod+g exec "rofi -show window"
@@ -239,7 +239,7 @@ set $wsMusic "10:"
 
 # map workspaces to outputs
 workspace $wsBrowser output HDMI-0
-workspace $wsMail output HDMI-0 
+workspace $wsMail output HDMI-0
 workspace $wsCode output HDMI-0
 workspace $wsConsole output DP-0
 workspace $wsChat output DVI-I-1
@@ -280,6 +280,10 @@ assign [class="SmartGit"] workspace $wsVCS
 # float simulator window
 assign [class="CrowdSIM"] workspace $wsDebug
 assign [title="^qtDebug$"] workspace $wsDebug
+
+# float video window
+for_window [class="mpv"] floating enable
+for_window [class="Vlc"] floating enable
 
 # startup apps
 # start composite manager
