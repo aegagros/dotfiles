@@ -1,31 +1,35 @@
 call plug#begin('~/.vim/plugged')
+" Completion / Syntax-checking
 Plug 'scrooloose/syntastic'
-Plug 'vim-airline/vim-airline'
+Plug 'maralla/completor.vim'
+" Navigation
 Plug 'ctrlpvim/ctrlp.vim'
+Plug 'majutsushi/tagbar'
+Plug 'vim-scripts/a.vim'
+Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
+" Editing facilitation
+Plug 'alvan/vim-closetag'
+Plug 'tomtom/tcomment_vim'
+Plug 'lyokha/vim-xkbswitch'
+Plug 'godlygeek/tabular'
+" User interface
+Plug 'itchyny/lightline.vim'
 Plug 'flazz/vim-colorschemes'
 Plug 'gosukiwi/vim-atom-dark'
+Plug 'Yggdroot/indentLine'
+Plug 'lilydjwg/colorizer'
+" Distraction-free writing
+Plug 'junegunn/goyo.vim'
+Plug 'junegunn/limelight.vim'
+" Functionality integration
 Plug 'vimwiki/vimwiki'
-Plug 'kylef/apiblueprint.vim'
-Plug 'alvan/vim-closetag'
-Plug 'vimoutliner/vimoutliner'
-Plug 'tomtom/tcomment_vim'
-Plug 'majutsushi/tagbar'
-Plug 'lyokha/vim-xkbswitch'
+Plug 'editorconfig/editorconfig-vim'
 Plug 'tpope/vim-fugitive'
-Plug 'terryma/vim-multiple-cursors'
-Plug 'vim-scripts/a.vim'
 Plug 'itchyny/calendar.vim'
+" Syntax-specific
+Plug 'kylef/apiblueprint.vim'
 Plug 'octol/vim-cpp-enhanced-highlight'
 Plug 'nelstrom/vim-markdown-folding'
-" On-demand loading
-Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
-Plug 'lilydjwg/colorizer'
-Plug 'Yggdroot/indentLine'
-Plug 'godlygeek/tabular'
-Plug 'editorconfig/editorconfig-vim'
-Plug 'vim-scripts/ebnf.vim'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'maralla/completor.vim'
 call plug#end()
 
 set nocompatible
@@ -117,6 +121,9 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 " vimwiki fold sections
 let g:vimwiki_folding = 'expr'
+let g:vimwiki_list = [
+                \{'automatic_nested_syntaxes': 1},
+            \]
 
 " enable automatic layout switching
 let g:XkbSwitchEnabled = 1
