@@ -125,11 +125,12 @@ bindsym $mod+Shift+9 move container to workspace number 9
 bindsym $mod+Shift+0 move container to workspace number 10
 
 # rename workspace
-bindsym $mod+n exec "rofi -p 'new workspace: ' -input ~/.config/i3/desktops -dmenu | xargs i3-msg workspace"
+bindsym $mod+n exec "rofi -p 'new workspace' -input ~/.config/i3/desktops -dmenu | xargs i3-msg workspace"
+bindsym $mod+m exec "~/.config/i3/move_window.sh"
 
 # execute arbitrary i3 command
 # bindsym $mod+x exec i3-input -P 'Command: '
-bindsym $mod+x exec "cat '' | rofi -p 'i3-cmd: ' -lines 0 -dmenu | xargs i3-msg"
+bindsym $mod+x exec "cat '' | rofi -p 'i3-cmd' -lines 0 -dmenu | xargs i3-msg"
 
 # goto specific window
 bindsym $mod+g exec "rofi -show window"
@@ -267,6 +268,7 @@ assign [title="yEd"] workspace $wsDesign
 # chat
 assign [title="Viber"] workspace $wsChat
 assign [class="skypeforlinux"] workspace $wsChat
+# assign [class="Wire"] workspace $wsChat
 # virtual machine
 assign [class="VirtualBox"] workspace $wsVM
 # music
@@ -284,6 +286,7 @@ assign [title="^qtDebug$"] workspace $wsDebug
 # float video window
 for_window [class="mpv"] floating enable
 for_window [class="Vlc"] floating enable
+for_window [class="Wire"] floating enable
 
 # startup apps
 # start composite manager
