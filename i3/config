@@ -254,6 +254,7 @@ workspace $wsMusic output DP-0
 # browser
 assign [class="Firefox"] workspace $wsBrowser
 assign [class="Google-chrome"] workspace $wsBrowser
+assign [class="Chromium"] workspace $wsBrowser
 assign [class="qutebrowser"] workspace $wsBrowser
 assign [class="Vivaldi"] workspace $wsBrowser
 # mail
