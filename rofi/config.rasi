@@ -1,0 +1,9 @@
+configuration {
+    theme: "~/.cache/wal/rofi-sidebar-dark.rasi";
+    font: "Nokia Pure Headline Light, Font Awesome 16";
+    matching: "regex";
+    show-icons: true;
+    sidebar-mode:true;
+}
+
+

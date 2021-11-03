@@ -5,6 +5,11 @@ My personal configuration files for:
 
  - X server
  - vim configuration and plugins
- - xmonad
- - xmobar
+ - i3
+ - polybar
+ - dunst
+ - rofi
+ - spicetify
+ - pywal
+ - picom
 

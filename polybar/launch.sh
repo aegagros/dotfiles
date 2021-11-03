@@ -11,11 +11,11 @@ while pgrep -x polybar >/dev/null; do sleep 1; done
 bar_idx=1
 xrandr --listactivemonitors | grep "^ [0-9]\+:" | awk '{ print $4; }' | while read -r line ; do
     if [ $bar_idx -eq 1 ]; then
-        MONITOR=$line polybar main &
+        MONITOR=$line polybar -r main &
     else
-        MONITOR=$line polybar secondary &
+        MONITOR=$line polybar -r secondary &
     fi
-    let "bar_idx+=1"
+    bar_idx=$((bar_idx+1))
 done
 
 echo "Bars launched..."

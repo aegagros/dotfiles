@@ -1,39 +1,50 @@
 call plug#begin('~/.vim/plugged')
 " Completion / Syntax-checking
-Plug 'scrooloose/syntastic'
-Plug 'maralla/completor.vim'
+Plug 'prabirshrestha/async.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'mattn/vim-lsp-settings'
+" Plug 'piec/vim-lsp-clangd'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+"Plug 'scrooloose/syntastic'
+"Plug 'maralla/completor.vim'
 " Navigation
-Plug 'ctrlpvim/ctrlp.vim'
+"Plug 'ctrlpvim/ctrlp.vim'
 Plug 'majutsushi/tagbar'
-Plug 'vim-scripts/a.vim'
+"Plug 'vim-scripts/a.vim'
 Plug 'scrooloose/nerdtree', { 'on':  'NERDTreeToggle' }
 " Editing facilitation
 Plug 'alvan/vim-closetag'
 Plug 'tomtom/tcomment_vim'
-Plug 'lyokha/vim-xkbswitch'
+Plug 'tpope/vim-surround'
+"Plug 'lyokha/vim-xkbswitch'
 Plug 'godlygeek/tabular'
 " User interface
 Plug 'itchyny/lightline.vim'
-Plug 'flazz/vim-colorschemes'
+" Plug 'vim-airline/vim-airline'
 Plug 'gosukiwi/vim-atom-dark'
 Plug 'Yggdroot/indentLine'
-Plug 'lilydjwg/colorizer'
+Plug 'fenetikm/falcon'
+Plug 'NLKNguyen/papercolor-theme'
+Plug 'arcticicestudio/nord-vim'
+Plug 'altercation/vim-colors-solarized'
+Plug 'dylanaraps/wal.vim'
 " Distraction-free writing
 Plug 'junegunn/goyo.vim'
 Plug 'junegunn/limelight.vim'
 " Functionality integration
 Plug 'vimwiki/vimwiki'
-Plug 'editorconfig/editorconfig-vim'
-Plug 'tpope/vim-fugitive'
-Plug 'itchyny/calendar.vim'
+Plug 'mattn/calendar-vim'
+"Plug 'editorconfig/editorconfig-vim'
+"Plug 'tpope/vim-fugitive'
 " Syntax-specific
-Plug 'kylef/apiblueprint.vim'
 Plug 'octol/vim-cpp-enhanced-highlight'
-Plug 'nelstrom/vim-markdown-folding'
+Plug 'aklt/plantuml-syntax'
+Plug 'liuchengxu/vim-clap'
 call plug#end()
 
 set nocompatible
-set clipboard=unnamedplus
+" set clipboard=unnamedplus
 set encoding=utf-8
 
 " various helpful mappings
@@ -56,6 +67,7 @@ set ignorecase
 set smartcase
 set hlsearch
 nmap <leader>q :nohlsearch<CR>
+nmap <leader>n :set rnu!<CR>
 
 " identation
 let g:load_doxygen_syntax=1
@@ -71,50 +83,49 @@ filetype plugin on
 
 " syntax-coloring, line numbers, etc.
 set nu
-set background=dark
 set laststatus=2
 syntax on
 set termguicolors
 set t_Co=256
 set t_ut=
-let g:gruvbox_contrast_dark='hard'
-let g:gruvbox_contrast_light='hard'
-color gruvbox
+" let g:gruvbox_contrast_dark='hard'
+" let g:gruvbox_contrast_light='hard'
+
 if has("gui_running")
-    set guifont=Hack\ 10.5
+    set guifont=Cascadia\ Code\ Medium\ 9.5
     set guioptions-=T
     set guioptions-=m
     set guioptions-=r
     set guioptions-=l
     set guioptions-=L
+    " set lines=50 columns=250
     set visualbell
+    set background=light
 else
-    hi Normal guibg=NONE ctermbg=NONE
+    set background=dark
 endif
+colorscheme PaperColor
+
+let g:indentLine_color_term=8
+let g:indentLine_char_list = ['|', '¦', '┆', '┊']
 
 " additional features
 set wildmenu
 set ruler
+set cursorline
+set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<,space:·
+" set list
+" set colorcolumn=100
 
 " disable swap and backup files (Always use version control! ALWAYS!)
 set nobackup
 set noswapfile
 
 " Strip trailing spaces on save
-autocmd BufWritePre * :%s/\s\+$//e
-
-" Instruct Ctrl-P to ignore files according to git ignore patterns
-let g:ctrlp_user_command = [
-    \ '.git', 'cd %s && git ls-files . -co --exclude-standard',
-    \ 'find %s -type f'
-    \ ]
+" autocmd BufWritePre * :%s/\s\+$//e
 
 " Enable powerline fonts in command line
-let g:airline_powerline_fonts=1
-
-" Instruct syntastic to use C++11 stuff
-let g:syntastic_cpp_compiler = 'g++'
-let g:syntastic_cpp_compiler_options = ' -std=c++11 -I./src'
+" let g:airline_powerline_fonts=1
 
 " Auto-close vim if last buffer is a NERDtree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
@@ -122,23 +133,26 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 " vimwiki fold sections
 let g:vimwiki_folding = 'expr'
 let g:vimwiki_list = [
-                \{'automatic_nested_syntaxes': 1},
+                \{'automatic_nested_syntaxes': 1}
             \]
+let g:vimwiki_hl_cb_checked=2
+" let g:vimwiki_hl_headers=1
 
-" enable automatic layout switching
-let g:XkbSwitchEnabled = 1
-
-let g:calendar_google_calendar = 1
 let g:calendar_first_day="monday"
 let g:calendar_date_endian="little"
 let g:calendar_calendar="greece"
 
 let g:indentLine_char="│"
-let g:indentLine_color_gui="#2b2b29"
-
-let g:completor_clang_binary = '/usr/bin/clang'
-let g:completor_python_binary = '/usr/lib/python3.6/site-packages/jedi'
 
 " hide specific files in NERDTree
 let NERDTreeIgnore = ['\.pyc$', '^__pycache__$']
 
+" xml syntax folding by default
+let g:xml_syntax_folding=1
+au FileType xml setlocal foldmethod=syntax
+
+let g:lsp_sings_enabled = 1
+let g:lsp_diagnostics_echo_cursor = 1
+
+let g:indentLine_setConceal=0
+set conceallevel=0
