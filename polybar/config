@@ -53,16 +53,16 @@ tray-maxsize=16
 
 [bar/main]
 inherit = bar/common
-modules-left = i3 xwindow
-modules-center = date2
-modules-right = backlight pulseaudio xkeyboard wlan eth1 eth2 vpn cpu temperature battery1
+modules-left = backlight pulseaudio spotify-prev spotify-play spotify-pause spotify-next spotify 
+modules-center = i3
+modules-right = xkeyboard wlan eth1 eth2 vpn cpu temperature battery1 date2
 tray-position = right
 
 [bar/secondary]
 inherit = bar/common
-modules-left = i3 xwindow
-modules-center = date2
-modules-right = boacklight pulseaudio xkeyboard wlan eth1 eth2 vpn cpu temperature battery1
+modules-left = xwindow
+modules-center = i3
+modules-right = xkeyboard date2
 
 [module/xwindow]
 type = internal/xwindow
@@ -276,7 +276,40 @@ format = <label>
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
 format-underline = ${colors.background}
-label = "%output%"
+label = %{T3}%output%%{T-}
 exec = date +"%d/%m/%Y %H:%M"
+
+[module/spotify]
+type = custom/script
+exec = playerctl -p spotify metadata --format "{{artist}} - {{title}}"
+exec-if = test $(playerctl -p spotify status) = "Playing"
+interval = 2
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt}
+
+[module/spotify-next]
+type = custom/script
+exec = echo ""
+click-left = playerctl -p spotify next
+
+[module/spotify-prev]
+type = custom/script
+exec = echo ""
+click-left = playerctl -p spotify previous
+
+[module/spotify-play]
+type = custom/script
+exec = echo ""
+exec-if = test $(playerctl -p spotify status) = "Paused"
+click-left = playerctl -p spotify play
+interval = 1
+
+[module/spotify-pause]
+type = custom/script
+exec = echo ""
+exec-if = test $(playerctl -p spotify status) = "Playing"
+click-left = playerctl -p spotify pause
+interval = 1
+
 
 ; vim:ft=dosini
