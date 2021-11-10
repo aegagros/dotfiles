@@ -17,9 +17,10 @@ info = ${wal.color6}
 
 [fonts]
 ; font_0 = Inconsolata:style=normal:size=10
-font_0 = CascadiaCodePL:style=Regular:size=10.5;2
-font_1 = DejaVuSansMono:size=11;2
-font_2 = FontAwesome:size=11;2
+font_0 = FontAwesome:pixelsize=12;2
+font_1 = Iosevka:style=Medium:size=10.5;2
+font_2 = Iosevka:style=Bold:size=14;2
+font_3 = DejaVuSansMono:size=10;2
 
 [global/wm]
 margin-top = 0
