@@ -17,9 +17,9 @@ info = ${wal.color6}
 
 [fonts]
 ; font_0 = Inconsolata:style=normal:size=10
-font_0 = FontAwesome:pixelsize=12;2
+font_0 = FontAwesome:pixelsize=12;4
 font_1 = Iosevka:style=Medium:size=10.5;2
-font_2 = Iosevka:style=Bold:size=14;2
+font_2 = Iosevka:style=Bold:size=12;3
 font_3 = DejaVuSansMono:size=10;2
 
 [global/wm]
@@ -290,11 +290,13 @@ format-prefix-foreground = ${colors.foreground-alt}
 [module/spotify-next]
 type = custom/script
 exec = echo ""
+exec-if = test $(playerctl -p spotify status) = "Playing"
 click-left = playerctl -p spotify next
 
 [module/spotify-prev]
 type = custom/script
 exec = echo ""
+exec-if = test $(playerctl -p spotify status) = "Playing"
 click-left = playerctl -p spotify previous
 
 [module/spotify-play]
