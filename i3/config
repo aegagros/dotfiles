@@ -118,7 +118,7 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
+bindsym $mod+Shift+space floating toggle; [floating] border normal 1; [tiling] border pixel 1
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
@@ -237,8 +237,10 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 default_border pixel 1
+for_window[floating] border normal 1
 gaps inner 4
 gaps outer 2
+smart_gaps on
 
 title_align center
 show_marks yes 
