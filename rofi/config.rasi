@@ -1,6 +1,6 @@
 configuration {
     theme: "~/.cache/wal/rofi-sidebar-dark.rasi";
-    font: "Nokia Pure Headline Light, Font Awesome 16";
+    font: "Iosevka Nerd Font Light 15";
     matching: "regex";
     show-icons: true;
     sidebar-mode:true;

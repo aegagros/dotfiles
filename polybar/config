@@ -3,6 +3,7 @@ include-file = ~/.cache/wal/colors-polybar
 
 [colors]
 transparent = #00000000
+black = #000000
 background = ${wal.background}
 background-alt = ${wal.color8}
 foreground = ${wal.foreground}
@@ -16,10 +17,9 @@ info = ${wal.color6}
 
 
 [fonts]
-; font_0 = Inconsolata:style=normal:size=10
-font_0 = FontAwesome:pixelsize=12;4
-font_1 = Iosevka:style=Medium:size=10.5;2
-font_2 = Iosevka:style=Bold:size=12;3
+font_0 = FontAwesome:pixelsize=12;3
+font_1 = Iosevka:pixelsize=11;2
+font_2 = Iosevka:pixelsize=11:style=Bold;2
 font_3 = DejaVuSansMono:size=10;2
 
 [global/wm]
@@ -53,16 +53,23 @@ tray-maxsize=16
 
 [bar/main]
 inherit = bar/common
-modules-left = backlight pulseaudio spotify-prev spotify-play spotify-pause spotify-next spotify 
+modules-left = xwindow
 modules-center = i3
-modules-right = xkeyboard wlan eth1 eth2 vpn cpu temperature battery1 date2
-tray-position = right
+modules-right = xkeyboard wlan eth1 eth2 vpn cpu temperature battery1
+# tray-position = right
+
+[bar/main-bottom]
+inherit = bar/common
+modules-left = spotify-prev spotify-play spotify-pause spotify-next spotify
+modules-center = date2
+modules-right = backlight volubtc volheadphones
+bottom = true
 
 [bar/secondary]
 inherit = bar/common
 modules-left = xwindow
 modules-center = i3
-modules-right = xkeyboard date2
+modules-right = xkeyboard
 
 [module/xwindow]
 type = internal/xwindow
@@ -76,7 +83,7 @@ blacklist-1 = scroll lock
 blacklist-2 = caps lock
 
 ; format-underline = ${colors.input}
-format-prefix = "  "
+format-prefix = " "
 format-prefix-foreground = ${colors.input}
 label-layout = %layout:2%
 
@@ -113,19 +120,11 @@ label-visible-padding = ${self.label-focused-padding}
 [module/backlight]
 type = internal/backlight
 card = intel_backlight
-format = <label> <bar>
-label = 
-label-foreground = ${colors.foreground-alt}
-bar-width = 10
-bar-indicator = ${progressbar.indicator_icon}
-bar-indicator-foreground = #ff
-bar-indicator-font = 1
-bar-fill = ${progressbar.fill_icon}
-bar-fill-font = 1
-bar-fill-foreground = ${colors.foreground}
-bar-empty = ${progressbar.empty_icon}
-bar-empty-font = 1
-bar-empty-foreground = ${colors.foreground-alt}
+format = <label>
+label = %percentage%%
+format-prefix = " "
+format-prefix-foreground = ${colors.foreground-alt}
+format-foreground = ${colors.foreground}
 
 [module/cpu]
 type = internal/cpu
@@ -156,7 +155,7 @@ type = internal/network
 interface = enp0s31f6
 interval = 3.0
 
-format-connected-prefix = " "
+format-connected-prefix = "ﯱ "
 format-connected-prefix-foreground = ${colors.network}
 format-connected-foreground = ${colors.foreground}
 label-connected = %local_ip%
@@ -171,7 +170,7 @@ type = internal/network
 interface = enx806d971c3c33
 interval = 3.0
 
-format-connected-prefix = " "
+format-connected-prefix = "ﯱ "
 format-connected-prefix-foreground = ${colors.network}
 format-connected-foreground = ${colors.foreground}
 label-connected = %local_ip%
@@ -186,7 +185,7 @@ type = internal/network
 interface = cscotun0
 interval = 3.0
 
-format-connected-prefix = " "
+format-connected-prefix = "旅 "
 format-connected-prefix-foreground = ${colors.network}
 format-connected-foreground = ${colors.foreground}
 label-connected = %local_ip%
@@ -200,12 +199,14 @@ label-disconnected-foreground = ${colors.foreground-alt}
 type = internal/pulseaudio
 use-ui-max = false
 click-right = pavucontrol
-format-volume = <label-volume> <bar-volume>
-label-volume = 
-label-volume-foreground = ${colors.foreground-alt}
-format-muted-prefix = " "
+format-volume-prefix = "  "
+format-volume-prefix-foreground = ${colors.foreground-alt}
+format-muted-prefix = ${self.format-volume-prefix}
 format-muted-foreground = ${colors.foreground-alt}
-label-muted = sound muted
+format-volume = <label-volume> <bar-volume>
+label-volume = 
+label-volume-foreground = ${colors.foreground-alt}
+label-muted = "--------MUTED-------"
 bar-volume-width = ${progressbar.width}
 bar-volume-indicator = ${progressbar.indicator_icon}
 bar-volume-indicator-font = 1
@@ -214,6 +215,16 @@ bar-volume-fill-font = 1
 bar-volume-empty = ${progressbar.empty_icon}
 bar-volume-empty-font = 1
 bar-volume-empty-foreground = ${colors.foreground-alt}
+
+[module/volubtc]
+inherit = module/pulseaudio
+format-volume-prefix = " USB-C Dock "
+sink = alsa_output.usb-DisplayLink_ThinkPad_Hybrid_USB-C_with_USB-A_Dock_12236703-02.analog-surround-51
+
+[module/volheadphones]
+inherit = module/pulseaudio
+format-volume-prefix = " Speaker+Headphones "
+sink = alsa_output.pci-0000_00_1f.3-platform-skl_hda_dsp_generic.HiFi__hw_sofhdadsp__sink
 
 [module/battery1]
 type = internal/battery
@@ -274,8 +285,10 @@ type = custom/script
 interval = 60
 format = <label>
 format-prefix = " "
-format-prefix-foreground = ${colors.foreground-alt}
-format-underline = ${colors.background}
+format-prefix-foreground = ${colors.black}
+format-foreground = ${colors.foreground}
+format-background = ${colors.background-alt}
+format-padding = 2
 label = %{T3}%output%%{T-}
 exec = date +"%d/%m/%Y %H:%M"
 
@@ -308,10 +321,9 @@ interval = 1
 
 [module/spotify-pause]
 type = custom/script
-exec = echo ""
+exec = echo " "
 exec-if = test $(playerctl -p spotify status) = "Playing"
 click-left = playerctl -p spotify pause
 interval = 1
-
 
 ; vim:ft=dosini
