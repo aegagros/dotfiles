@@ -196,6 +196,7 @@ for_window [class="Vlc"] floating enable
 for_window [class="Gnome-calculator"] floating enable
 for_window [class="termlauncher"] floating enable
 
+bindsym $mod+Shift+Tab exec ~/bin/show_tray.sh
 bindsym $mod+Tab exec rofi -modi "window#drun#run" -show window
 bindsym $mod+n exec cat ~/.config/i3/desktops | $launcher -p "Switch to workspace" -dmenu -columns 3 -lines 4 | xargs i3-msg workspace
 bindsym $mod+m exec cat ~/.config/i3/desktops | $launcher -p "Move window to workspace" -dmenu -columns 3 -lines 4 | xargs i3-msg move window to workspace
