@@ -1,0 +1,8 @@
+background "#32344a"
+dockapp_mode
+icon_size 32
+slot_size 40
+window_layer top
+window_strut auto
+window_type utility
+decorations border
