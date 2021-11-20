@@ -19,7 +19,7 @@ info = ${wal.color6}
 [fonts]
 font_0 = FontAwesome:pixelsize=12;3
 font_1 = Iosevka:pixelsize=11;2
-font_2 = Iosevka:pixelsize=11:style=Bold;2
+font_2 = Iosevka:pixelsize=13:style=Bold;2
 font_3 = DejaVuSansMono:size=10;2
 
 [global/wm]
