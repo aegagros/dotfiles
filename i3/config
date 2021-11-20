@@ -203,6 +203,10 @@ bindsym $mod+m exec cat ~/.config/i3/desktops | $launcher -p "Move window to wor
 bindsym $mod+b exec xrandr | grep -i " connected" | awk '{ print $1}' | rofi -p "Move workspace to output" -dmenu -no-custom | xargs -L1 i3-msg move workspace to
 bindsym $mod+o exec ~/bin/termlauncher.sh 11 150 30 ~/bin/fzf_finder.sh
 
+# mark/focus
+bindsym $mod+Shift+m exec i3-msg "mark --toggle $(i3-msg -t get_marks | jq -r '.[]' | rofi -dmenu -p '(un)mark window')"
+bindsym $mod+Shift+f exec i3-msg "[con_mark=\"$(i3-msg -t get_marks | jq -r '.[]' | rofi -dmenu -p 'Focus mark')\"] focus"
+
 # reload the configuration file
 bindsym $mod+Shift+c reload
 # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
