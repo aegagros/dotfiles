@@ -201,7 +201,7 @@ bindsym $mod+Tab exec rofi -modi "window#drun#run" -show window
 bindsym $mod+n exec cat ~/.config/i3/desktops | $launcher -p "Switch to workspace" -dmenu -columns 3 -lines 4 | xargs i3-msg workspace
 bindsym $mod+m exec cat ~/.config/i3/desktops | $launcher -p "Move window to workspace" -dmenu -columns 3 -lines 4 | xargs i3-msg move window to workspace
 bindsym $mod+b exec xrandr | grep -i " connected" | awk '{ print $1}' | rofi -p "Move workspace to output" -dmenu -no-custom | xargs -L1 i3-msg move workspace to
-bindsym $mod+o exec ~/bin/termlauncher.sh ~/bin/fzf_finder.sh
+bindsym $mod+o exec ~/bin/termlauncher.sh 11 150 30 ~/bin/fzf_finder.sh
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -239,6 +239,7 @@ bindsym $mod+r mode "resize"
 
 default_border pixel 1
 for_window[floating] border normal 1
+for_window[class="termlauncher"] border pixel 1
 gaps inner 4
 gaps outer 2
 smart_gaps on
