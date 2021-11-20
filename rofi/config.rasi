@@ -1,7 +1,7 @@
 configuration {
     theme: "~/.cache/wal/rofi-sidebar-dark.rasi";
     font: "Iosevka Nerd Font Light 15";
-    matching: "regex";
+    matching: "fuzzy";
     show-icons: true;
     sidebar-mode:true;
 }
