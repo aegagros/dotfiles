@@ -1,9 +1,13 @@
 configuration {
     theme: "~/.cache/wal/rofi-sidebar-dark.rasi";
-    font: "Iosevka Nerd Font Light 15";
-    matching: "fuzzy";
+    font: "JetBrains Mono, FontAwesome 10";
+    matching: "normal";
     show-icons: true;
-    sidebar-mode:true;
+    sidebar-mode:false;
+    location: 2;
+    yoffset: 0;
+    padding: 0;
+    monitor: "primary";
 }
 
 

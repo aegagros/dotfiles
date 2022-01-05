@@ -18,8 +18,8 @@ info = ${wal.color6}
 
 [fonts]
 font_0 = FontAwesome:pixelsize=12;3
-font_1 = Iosevka:pixelsize=11;2
-font_2 = Iosevka:pixelsize=13:style=Bold;2
+font_1 = JetBrainsMono:pixelsize=10;2
+font_2 = JetBrainsMono:pixelsize=13:style=Medium;3
 font_3 = DejaVuSansMono:size=10;2
 
 [global/wm]
@@ -61,7 +61,7 @@ modules-right = xkeyboard wlan eth1 eth2 vpn cpu temperature battery1
 [bar/main-bottom]
 inherit = bar/common
 modules-left = spotify-prev spotify-play spotify-pause spotify-next spotify
-modules-center = date2
+modules-center = date time
 modules-right = backlight volubtc volheadphones
 bottom = true
 
@@ -280,17 +280,30 @@ ramp-3 = 
 ramp-4 = 
 ramp-foreground = ${colors.resources}
 
-[module/date2]
+[module/date]
 type = custom/script
 interval = 60
 format = <label>
 format-prefix = " "
-format-prefix-foreground = ${colors.black}
+format-prefix-foreground = ${colors.background-alt}
 format-foreground = ${colors.foreground}
-format-background = ${colors.background-alt}
+#format-background = ${colors.background-alt}
+format-padding = 2
+label = %output%
+exec = date +"%d/%m/%Y"
+click-left = termlauncher.sh calcurse
+
+[module/time]
+type = custom/script
+interval = 60
+format = <label>
+format-prefix = " "
+format-prefix-foreground = ${colors.background-alt}
+format-foreground = ${colors.foreground}
+#format-background = ${colors.background-alt}
 format-padding = 2
 label = %{T3}%output%%{T-}
-exec = date +"%d/%m/%Y %H:%M"
+exec = date +"%H:%M"
 
 [module/spotify]
 type = custom/script
@@ -299,6 +312,7 @@ exec-if = test $(playerctl -p spotify status) = "Playing"
 interval = 2
 format-prefix = " "
 format-prefix-foreground = ${colors.foreground-alt}
+click-left = i3-msg '[title="Spotify"] focus'
 
 [module/spotify-next]
 type = custom/script
