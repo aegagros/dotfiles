@@ -26,12 +26,11 @@ set $semitransparent #00000066
 set $borderWidth 2
 set $mod Mod4
 set $terminal WINIT_X11_SCALE_FACTOR=1 alacritty
-set $launcher rofi
-set $background_image ~/ownCloud/Wallpapers/alpine-ibex_1080p.jpg
+set $background_image ~/ownCloud/Wallpapers/iliana_window.png
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:JetBrainsMono,FontAwesome 10
+font pango:SegoeUI,FontAwesome 10
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
@@ -70,9 +69,6 @@ bindsym $mod+Return exec $terminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
-
-# start launcher
-# bindsym Alt+Space exec rofi -show drun
 
 # take a screenshot
 bindsym $mod+Shift+s exec flameshot gui
@@ -119,7 +115,8 @@ bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
 # toggle tiling / floating
-bindsym $mod+Shift+space floating toggle; [floating] border normal $borderWidth; [tiling] border pixel $borderWidth
+# bindsym $mod+Shift+space floating toggle; [floating] border normal $borderWidth; [tiling] border pixel $borderWidth
+bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
@@ -141,15 +138,23 @@ bindsym $mod+l exec i3lock -c 000000
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
-set $wsTerm "1:"
-set $wsWeb "2:"
-set $wsMail "3:"
-set $wsCode "4:"
-set $wsChat "5:"
-set $wsDesign "6:"
-set $wsScreen "7:"
-set $wsDoc "8:"
-set $wsMusic "9:"
+set $wsTerm     "1:term"
+set $wsWeb      "2:www"
+set $wsMail     "3:mail"
+set $wsCode     "4:dev"
+set $wsChat     "5:chat"
+set $wsDesign   "6:design"
+set $wsScreen   "7:show"
+set $wsDoc      "8:doc"
+set $wsMusic    "9:music"
+
+# assign workspaces to outputs
+workspace $wsTerm output primary
+workspace $wsWeb output primary
+workspace $wsMail output primary
+workspace $wsCode output primary
+workspace $wsChat output eDP-1 primary
+workspace $wsMusic output eDP-1 primary
 
 # switch to workspace
 bindsym $mod+1 workspace number $wsTerm
@@ -178,7 +183,7 @@ bindsym $mod+Shift+9 move container to workspace number $wsMusic
 assign [class="Firefox"] workspace $wsWeb
 assign [class="qutebrowser"] workspace $wsWeb
 # mail
-assign [class="Google-chrome"] workspace $wsMail
+assign [title="Outlook"] workspace $wsMail
 assign [class="Thunderbird"] workspace $wsMail
 # code
 assign [class="^Code$"] workspace $wsCode
@@ -197,18 +202,18 @@ for_window [class="Vlc"] floating enable
 for_window [class="Gnome-calculator"] floating enable
 for_window [class="termlauncher"] floating enable
 
-bindsym $mod+Shift+Tab exec ~/bin/show_tray.sh
+# bindsym $mod+Shift+Tab exec ~/bin/show_tray.sh
 bindsym $mod+slash exec rofi -show drun
 bindsym $mod+Tab exec rofi -show window
-bindsym $mod+n exec cat ~/.config/i3/desktops | $launcher -p "Switch to workspace" -dmenu -columns 3 -lines 4 | xargs i3-msg workspace
-bindsym $mod+m exec cat ~/.config/i3/desktops | $launcher -p "Move window to workspace" -dmenu -columns 3 -lines 4 | xargs i3-msg move window to workspace
-bindsym $mod+b exec xrandr | grep -i " connected" | awk '{ print $1}' | rofi -p "Move workspace to output" -dmenu -no-custom | xargs -L1 i3-msg move workspace to
+bindsym $mod+n exec cat ~/.config/i3/desktops | rofi -p "Switch to workspace" -dmenu -columns 3 -lines 4 | xargs i3-msg workspace
+bindsym $mod+m exec ~/.config/i3/move_window.sh
+bindsym $mod+b exec ~/.config/i3/move_workspace.sh
 bindsym $mod+o exec ~/bin/termlauncher.sh -s 9 128 30 ~/bin/fzf_finder.sh
 bindsym $mod+t exec ~/bin/termlauncher.sh -s 9 160 50 htop
 
 # mark/focus
-bindsym $mod+Shift+m exec i3-msg "mark --toggle $(i3-msg -t get_marks | jq -r '.[]' | rofi -dmenu -p '(un)mark window')"
-bindsym $mod+Shift+f exec i3-msg "[con_mark=\"$(i3-msg -t get_marks | jq -r '.[]' | rofi -dmenu -p 'Focus mark')\"] focus"
+bindsym $mod+Shift+m exec i3-msg "mark --toggle $(i3-msg -t get_marks | jq -r '.[]' | rofi -dmenu -p '(un)mark window' -lines 2)"
+bindsym $mod+Shift+f exec i3-msg "[con_mark=\"$(i3-msg -t get_marks | jq -r '.[]' | rofi -dmenu -p 'Focus mark' -lines 2)\"] focus"
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -245,20 +250,20 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 default_border pixel $borderWidth
-for_window[floating] border normal $borderWidth
-for_window[class="termlauncher"] border pixel $borderWidth
-# gaps inner 4
-# gaps outer 2
-# smart_gaps on
-floating_maximum_size 1600 x 900
+# for_window[floating] border normal $borderWidth
+# for_window[class="termlauncher"] border pixel $borderWidth
+gaps inner 4
+gaps outer 2
+smart_gaps on
+#floating_maximum_size 1600 x 900
 
 title_align center
 show_marks yes 
 
 #class                     border              backgr.         text            indicator       child_border
 client.focused             $foreground         $color8         $foreground     $foreground     $foreground
-client.focused_inactive    $background         $background     $foreground     $background     $background
-client.unfocused           $background         $background     $color8         $background     $background
+client.focused_inactive    $color8             $background     $foreground     $background     $background
+client.unfocused           $color8             $background     $color8         $background     $background
 client.urgent              $color8             $background     $color1         $color8         $foreground
 client.placeholder         $background         $background     $foreground     $background     $color8
 client.background          $semitransparent
@@ -275,6 +280,7 @@ client.background          $semitransparent
 #         background #00000000
 #     }
 # }
+exec --no-startup-id XDG_CURRENT_DESKTOP=Gnome; /usr/libexec/gsd-xsettings
 exec_always --no-startup-id $HOME/.config/polybar/launch.sh
 
 # compositor
@@ -297,4 +303,5 @@ exec_always --no-startup-id "xinput --set-prop 'Synaptics TM3471-020' 'libinput 
 exec_always --no-startup-id "xinput --set-prop 'Synaptics TM3471-020' 'libinput Accel Speed' '0.5'"
 
 exec --no-startup-id i3-msg 'workspace $wsTerm'
+exec_always --no-startup-id ~/bin/launch_proxy.sh
 

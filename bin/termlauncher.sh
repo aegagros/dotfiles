@@ -1,7 +1,7 @@
 #!/bin/bash
 EXEC="WINIT_X11_SCALE_FACTOR=1 alacritty --class termlauncher,termlauncher"
 
-if [ $1 = "-s" ]
+if [[ "$1" = "-s" ]]
 then
     shift
     FONTSIZE=$1
@@ -9,10 +9,10 @@ then
     ROWS=$3
     shift 3
     CMD="$*"
-    EXEC="$EXEC --option 'window.dimensions.columns=$COLS' --option 'window.dimensions.lines=$ROWS' --option font.size=$FONTSIZE -e $CMD"
+    EXEC="$EXEC --option 'window.dimensions.columns=$COLS' --option 'window.dimensions.lines=$ROWS' --option font.size=$FONTSIZE -e \"$CMD\""
 else
     CMD="$*"
-    EXEC="$EXEC -e $CMD"
+    EXEC="$EXEC -e \"$CMD\""
 fi
 
 #WINIT_X11_SCALE_FACTOR=1 alacritty \
