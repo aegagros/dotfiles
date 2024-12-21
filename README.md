@@ -1,10 +1,11 @@
 dotFiles
 ========
 
-My personal configuration files for:
+My personal configuration files for my daily driver, including:
 
- - X server
- - vim configuration and plugins
- - xmonad
- - xmobar
+- hyprland
+- alacritty
+- neovim 
+
+(and more)
 

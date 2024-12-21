@@ -1,0 +1,25 @@
+* {{
+	all: unset;
+	background-image: none;
+}}
+
+window {{
+	background: rgba(0, 0, 0, 0.5);
+}}
+
+button {{
+	font-family: 'Aptos, JetBrainsMono Nerd Font';
+	font-size: 10rem;
+    background-color: {background};
+	color: {foreground};
+	margin: 2rem;
+	border-radius: 2rem;
+	padding: 3rem;
+}}
+
+button:focus,
+button:active,
+button:hover {{
+	background-color: {color4};
+	color: {background};
+}}

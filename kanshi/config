@@ -1,0 +1,17 @@
+profile default {
+    output eDP-1 enable scale 1
+    exec hyprctl notify 1 3000 0 "Switched monitors to DEFAULT layout"
+}
+
+profile hdmi_horizontal {
+    output eDP-1 enable position 0,0 scale 1
+    output HDMI-A-2 enable position 1920,0 scale 1
+    exec notify-send -i monitor "kanshi" "Switched monitors to HDMI-HORIZONTAL layout"
+}
+
+profile hdmi_vertical {
+    output eDP-1 enable position 0,1080 scale 1
+    output HDMI-A-2 enable position 0,0 scale 1
+    exec notify-send -i monitor "kanshi" "Switched monitors to HDMI-VERTICAL layout"
+}
+

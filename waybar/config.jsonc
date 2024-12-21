@@ -1,0 +1,176 @@
+// -*- mode: jsonc -*-
+{
+    "height": 32,
+    "spacing": 2, // Gaps between modules (4px)
+    "modules-left": [
+        "idle_inhibitor",
+        "cpu",
+        "mpris",
+        // "hyprland/window",
+        "hyprland/submap"
+    ],
+    "modules-center": [
+        "hyprland/workspaces",
+    ],
+    "modules-right": [
+        "privacy",
+        "hyprland/language",
+        "network",
+        "network#vpn",
+        "battery",
+        "pulseaudio",
+        "tray",
+        "clock",
+        "custom/session"
+    ],
+    
+    // Modules configuration
+    
+    // WM (hyprland)
+    "hyprland/workspaces": {
+        "all-outputs": false,
+        "warp-on-scroll": false,
+        "enable-bar-scroll": true,
+        "disable-scroll-wraparound": true,
+        // "format": "<span font-scale='subscript'>{id}</span> {windows}",
+        "format": "{windows}",
+        "window-rewrite-default": "󰄯",
+        "format-window-separator": " ",
+        "window-rewrite": {
+            "class<firefox>": "󰈹",
+            "class<chromium>": "󰊯",
+            "class<chromium> title<Outlook.*>": "",
+            "class<chromium> title<Microsoft Teams.*>": "󰻞",
+            "class<teams-for-linux>": "󰻞",
+            "class<alacritty>": "󰆍",
+            "class<code>": "󰘦",
+            "class<neovide>": "󰘦",
+            "class<obsidian>": "󰏫",
+            "class<spotify>": "󰓇"
+        }
+        // "format-icons": {
+        //     "1": "",
+        //     "2": "󰞷",
+        //     "3": "",
+        //     "4": "󰭹",
+        //     "5": "",
+        //     "10": "",
+        // }
+    },
+    "hyprland/window": {
+        "format": "{title:.64}",
+        "separate-outputs": true
+    },
+    "hyprland/language": {
+        "format-gr": "🇬🇷 GR",
+        "format-en": "🇺🇸 EN"
+    },
+
+    "mpris": {
+        "format": "{status_icon} {artist} - {title}",
+        "interval": 1,
+        "dynamic-len": 40,
+        "status-icons": {
+            "playing": "▶",
+            "paused": "⏸",
+            "stopped": ""
+        },
+        "ignored-players": ["firefox", "chromium"]
+    },
+
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        }
+    },
+
+    "tray": {
+        "icon-size": 14,
+        "spacing": 10
+    },
+
+    "clock": {
+        "tooltip-format": "<big>{:%d %B %Y}</big>\n<tt><small>{calendar}</small></tt>",
+        "format": "{:%H:%M}",
+        "format-alt": "{:%H:%M <small>%d %b %Y</small>}",
+    },
+
+    "battery": {
+        "states": {
+            // "good": 95,
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon}  {capacity}%",
+        "format-full": "{icon}  {capacity}%",
+        "format-charging": "  {capacity}%",
+        "format-plugged": "  {capacity}%",
+        "format-alt": "{icon}  {time}",
+        "format-icons": ["", "", "", "", ""]
+    },
+
+    "pulseaudio": {
+        "scroll-step": 5,
+        "format": "{icon}  {volume}%",
+        "format-bluetooth": "{icon} {volume}% ",
+        "format-bluetooth-muted": "󰝟 {icon}",
+        "format-muted": "󰝟",
+        "format-icons": {
+            "default": ["", "", ""]
+        },
+        "on-click": "~/.local/bin/overlaytui.sh pulsemixer"
+    },
+
+    "privacy": {
+	    "icon-spacing": 4,
+	    "icon-size": 16,
+	    "transition-duration": 250,
+	    "modules": [
+		    {
+			    "type": "screenshare",
+			    "tooltip": true,
+			    "tooltip-icon-size": 24
+		    },
+		    {
+			    "type": "audio-out",
+			    "tooltip": true,
+			    "tooltip-icon-size": 24
+		    },
+		    {
+			    "type": "audio-in",
+			    "tooltip": true,
+			    "tooltip-icon-size": 24
+		    }
+	    ]
+    },
+
+    "network": {
+        "format-ethernet": "󰲝",
+        "format-wifi": "  {essid}",
+        "format-disconnected": "󰲜",
+        "tooltip-format": "interface: {ifname}\nip address: {ipaddr}\n\nup: {bandwidthUpBytes}bytes/sec\ndown: {bandwidthDownBytes}",
+        "tooltip-format": "interface: {ifname}\nip address: {ipaddr}\nfreq: {frequency}GHz\nsignal: {signaldBm}dBm / {signalStrength}%\n\nup: {bandwidthUpBytes}\ndown: {bandwidthDownBytes}"
+    },
+
+    "network#vpn": {
+        "interface": "vpn*",
+        "format": "󰌘  VPN",
+        "format-disconnected": "󰌙  VPN",
+        "tooltip-format": "interface: {ifname}\nip address: {ipaddr}\n\nup: {bandwidthUpBytes}bytes/sec\ndown: {bandwidthDownBytes}",
+        "on-click": "/home/pateraki/.config/waybar/vpn_toggle.sh"
+    },
+
+    "cpu": {
+        "format": "  {usage}%",
+        "interval": 5,
+        "on-click": "~/.local/bin/overlaytui.sh btm"
+    },
+
+    "custom/session": {
+        "tooltip": false,
+        "format": "󰐥",
+        "on-click": "wlogout"
+    }
+}
