@@ -20,3 +20,8 @@ save_to_clipboard = true
 import = [
     "~/.cache/wal/colors-alacritty.toml"
 ]
+
+[[keyboard.bindings]]
+action = "SpawnNewInstance"
+key = "Return"
+mods = "Shift | Super"
