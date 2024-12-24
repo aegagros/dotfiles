@@ -1,5 +1,2 @@
 return {
-  {
-    'wfxr/minimap.vim'
-  }
 }
