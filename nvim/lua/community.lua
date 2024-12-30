@@ -16,5 +16,6 @@ return {
   { import = "astrocommunity.pack.cpp" },
   { import = "astrocommunity.pack.typescript" },
   { import = "astrocommunity.color.transparent-nvim" },
+  { import = "astrocommunity.recipes.vscode" },
   -- import/override with your plugins folder
 }
