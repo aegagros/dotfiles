@@ -43,7 +43,7 @@
             "class<chromium> title<Microsoft Teams.*>": "󰻞",
             "class<teams-for-linux>": "󰻞",
             "class<alacritty>": "󰆍",
-            "class<code>": "󰘦",
+            "class<code.*>": "󰘦",
             "class<neovide>": "󰘦",
             "class<obsidian>": "󰏫",
             "class<spotify>": "󰓇"
