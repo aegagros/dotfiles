@@ -3,8 +3,9 @@
 CONTRAST="8.0"
 SATURATION="0.5"
 IMGPATH=$1
-LIGHT="-l"
+LIGHT=""
 BACKEND="colorz"
+THEME=$2
 
 function reload_spicetify_theme() {
     local curr_theme="$(spicetify config | grep "^current_theme" | awk '{ print $2; }')"
@@ -25,16 +26,24 @@ function reload_spicetify_theme() {
 
 ln -sf "${IMGPATH}" ~/.wallpaper
 
+if [[ ! -z "${THEME}" ]]; then
+    APPLY="--theme ${THEME}"
+else
+    APPLY="-i ${IMGPATH}"
+fi
+
 wal --cols16 \
     ${LIGHT} \
     --backend ${BACKEND} \
     --saturate ${SATURATION} \
     --contrast ${CONTRAST} \
-    -n -i "${IMGPATH}"
+    -n \
+    ${APPLY}
 
 swww img "${IMGPATH}"
 # reload services
 pkill -SIGUSR2 waybar
 dunstctl reload
 reload_spicetify_theme
+pywalfox update
 
