@@ -2,5 +2,5 @@ background-color={background}
 border-color={color8}
 text-color={color8}
 # selection-background={color8}
-selection-color={foreground}
+selection-color={color4}
 # selection-match-color={color5}
