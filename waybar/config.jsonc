@@ -4,6 +4,7 @@
     "spacing": 2, // Gaps between modules (4px)
     "modules-left": [
         "idle_inhibitor",
+        "custom/taskwarrior",
         "cpu",
         "mpris",
         // "hyprland/window",
@@ -166,6 +167,16 @@
         "format": "  {usage}%",
         "interval": 5,
         "on-click": "~/.local/bin/overlaytui.sh btm"
+    },
+
+    "custom/taskwarrior": {
+        "exec": "/home/pateraki/.config/waybar/modules/taskwarrior.sh",
+        "return-type": "json",
+        "exec-if": "which task",
+        "interval": 60,
+        "format": " {}",
+        "signal": 1,
+        "on-click": "~/.local/bin/overlaytui.sh ~/.config/waybar/modules/taskwarrior_waybar_tui.sh"
     },
 
     "custom/session": {

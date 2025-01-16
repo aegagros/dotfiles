@@ -85,6 +85,7 @@ button {
 #privacy,
 #cpu,
 #network,
+#custom-taskwarrior,
 #custom-session {
     padding: 0 10px;
     background-color: @background;
