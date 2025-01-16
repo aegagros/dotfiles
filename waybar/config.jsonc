@@ -152,7 +152,7 @@
         "format-wifi": "  {essid}",
         "format-disconnected": "󰲜",
         "tooltip-format": "interface: {ifname}\nip address: {ipaddr}\n\nup: {bandwidthUpBytes}bytes/sec\ndown: {bandwidthDownBytes}",
-        "tooltip-format": "interface: {ifname}\nip address: {ipaddr}\nfreq: {frequency}GHz\nsignal: {signaldBm}dBm / {signalStrength}%\n\nup: {bandwidthUpBytes}\ndown: {bandwidthDownBytes}"
+        "tooltip-format-wifi": "interface: {ifname}\nip address: {ipaddr}\nfreq: {frequency}GHz\nsignal: {signaldBm}dBm / {signalStrength}%\n\nup: {bandwidthUpBytes}\ndown: {bandwidthDownBytes}"
     },
 
     "network#vpn": {
