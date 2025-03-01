@@ -1,6 +1,6 @@
 background-color={background}
 border-color={color8}
 text-color={color8}
-# selection-background={color8}
-selection-color={color4}
-# selection-match-color={color5}
+selection-background={color4}
+selection-color={background}
+selection-match-color={foreground}

@@ -40,13 +40,13 @@
         "window-rewrite": {
             "class<firefox>": "󰈹",
             "class<chromium>": "󰊯",
-            "class<chromium> title<Outlook.*>": "",
-            "class<chromium> title<Microsoft Teams.*>": "󰻞",
+            "class<chrome.*> title<Outlook.*>": "",
+            "class<chrome.*> title<Microsoft Teams.*>": "󰻞",
             "class<teams-for-linux>": "󰻞",
             "class<alacritty>": "󰆍",
             "class<code.*>": "󰘦",
             "class<neovide>": "󰘦",
-            "class<obsidian>": "󰏫",
+            "class<obsidian>": "󱓩",
             "class<spotify>": "󰓇"
         }
         // "format-icons": {
