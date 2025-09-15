@@ -1,7 +1,7 @@
 include = /home/pateraki/.cache/wal/colors-tofi
 width=60%
 height=60%
-font=Fira Sans Semilight
+font=Adwaita Sans
 font-size=18
 outline-width=0
 border-width=2

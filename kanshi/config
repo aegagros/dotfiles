@@ -3,9 +3,14 @@ profile default {
     exec hyprctl notify 1 3000 0 "Switched monitors to DEFAULT layout"
 }
 
+profile default_125 {
+    output eDP-1 enable scale 1.25
+    exec hyprctl notify 1 3000 0 "Switched monitors to DEFAULT_125 layout"
+}
+
 profile hdmi_horizontal {
-    output eDP-1 enable position 0,0 scale 1
-    output HDMI-A-1 enable position 1920,0 scale 1
+    output eDP-1 enable position 0,0 scale 1.25
+    output HDMI-A-1 enable position 1536,0 scale 1
     exec notify-send -i monitor "kanshi" "Switched monitors to HDMI-HORIZONTAL layout"
 }
 
@@ -15,3 +20,34 @@ profile hdmi_vertical {
     exec notify-send -i monitor "kanshi" "Switched monitors to HDMI-VERTICAL layout"
 }
 
+profile usb_horizontal {
+    output eDP-1 enable position 0,0 scale 1
+    output DP-3 enable position 1920,0 scale 1
+    exec notify-send -i monitor "kanshi" "Switched monitors to USB-HORIZONTAL layout"
+}
+
+profile usb_horizontal_125 {
+    output eDP-1 enable position 0,0 scale 1
+    output DP-3 enable position 1920,0 scale 1.25
+    exec notify-send -i monitor "kanshi" "Switched monitors to USB-HORIZONTAL-125 layout"
+}
+
+profile usb_vertical {
+    output DP-3 enable position 0,0 scale 1.25
+    output eDP-1 enable position 1280,0 scale 1
+    exec notify-send -i monitor "kanshi" "Switched monitors to USB-VERTICAL layout"
+}
+
+profile home_triple_DP1 {
+    output eDP-1 enable position 0,0 scale 1.25
+    output HDMI-A-1 enable position 1536,0 scale 1
+    output DP-1 enable position 1536,1080 scale 1.25
+    exec notify-send -i monitor "kanshi" "Switched monitors to HOME-TRIPLE-DP1 layout"
+}
+
+profile home_triple_DP3 {
+    output eDP-1 enable position 0,0 scale 1.25
+    output HDMI-A-1 enable position 1536,0 scale 1
+    output DP-3 enable position 1536,1080 scale 1.25
+    exec notify-send -i monitor "kanshi" "Switched monitors to HOME-TRIPLE-DP3 layout"
+}

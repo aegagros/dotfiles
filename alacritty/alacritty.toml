@@ -1,12 +1,14 @@
 
 [font]
-size = 11.5
+size = 12.5
 
 [font.normal]
-family = "JetBrainsMono Nerd Font Propo"
+# family = "JetBrainsMono Nerd Font Propo"
+family = "Maple Mono"
+# family = "Source Code Pro Medium"
 
 [window]
-opacity = 0.9
+opacity = 1.0
 
 [window.padding]
 x = 8
