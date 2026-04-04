@@ -7,14 +7,10 @@ return {
   ---@type AstroCoreOpts
   opts = {
     options = {
-      opt = { -- configure vim.opt options
-        -- configure font
-        guifont = "JetBrainsMono Nerd Font:h11"
-        -- guifont = "Maple Mono Normal:h11.5",
-        -- line spacing
-        -- linespace = 0,
+      opt = {
+        guifont = "JetBrainsMono Nerd Font:h12.5",
       },
-      g = { -- configure vim.g variables
+      g = {
         neovide_cursor_trail_size = 0.2,
         neovide_padding_top = 8,
         neovide_padding_bottom = 8,

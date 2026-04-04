@@ -1,11 +1,12 @@
 
 [font]
-size = 12.5
+size = 13
 
 [font.normal]
 # family = "JetBrainsMono Nerd Font Propo"
-family = "Maple Mono"
-# family = "Source Code Pro Medium"
+# family = "Consolas Nerd Font"
+family = "SauceCodePro Nerd Font Mono"
+style = "Medium"
 
 [window]
 opacity = 1.0
